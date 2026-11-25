@@ -1,9 +1,12 @@
 import type { Metadata, Viewport } from 'next';
 import { body, display, mono } from './fonts';
 import { Providers } from './providers';
+import { siteUrl } from '@/lib/seo';
 import './globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl()),
+  icons: { icon: '/icon.svg' },
   title: { default: 'VServe Solar', template: '%s · VServe Solar' },
   description: 'Understand, compare, finance and buy solar in the Philippines.',
 };

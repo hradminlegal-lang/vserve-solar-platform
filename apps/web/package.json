@@ -12,13 +12,15 @@
     "e2e": "playwright test"
   },
   "dependencies": {
+    "@vserve/calc": "workspace:*",
+    "@vserve/ui": "workspace:*",
     "next": "15.5.4",
     "react": "19.1.1",
     "react-dom": "19.1.1",
-    "@vserve/calc": "workspace:*",
-    "@vserve/ui": "workspace:*"
+    "zod": "4.1.12"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.10.2",
     "@eslint/eslintrc": "3.3.1",
     "@playwright/test": "1.63.0",
     "@tailwindcss/postcss": "4.1.14",
@@ -29,7 +31,6 @@
     "eslint-config-next": "15.5.4",
     "tailwindcss": "4.1.14",
     "typescript": "5.9.3",
-    "vitest": "3.2.4",
-    "@axe-core/playwright": "4.10.2"
+    "vitest": "3.2.4"
   }
 }
