@@ -1,0 +1,220 @@
+{
+  "function": "financialModel",
+  "defaults": {
+    "ratePhpPerKwh": 15.06,
+    "yieldKwhPerKwpDay": 4,
+    "panelWatts": 600,
+    "panelAreaM2": 2.6,
+    "priceLowPerKwp": 50000,
+    "priceHighPerKwp": 70000,
+    "exportCreditPhpPerKwh": 5.5,
+    "daysPerMonth": 30
+  },
+  "tolerance": 0.01,
+  "vectors": [
+    {
+      "label": "typical 4 kWp home",
+      "input": {
+        "systemCostPhp": 250000,
+        "year1Kwh": 6000,
+        "degradationPct": 0.5,
+        "ratePhpPerKwh": 15.06,
+        "exportCreditPhpPerKwh": 5.5,
+        "escalationPct": 2,
+        "selfUsePct": 65,
+        "omPhpPerYear": 3000,
+        "inflationPct": 3,
+        "inverterReplaceYear": 12,
+        "inverterReplaceCostPhp": 45000,
+        "years": 25,
+        "discountPct": 8
+      },
+      "expected": {
+        "totalSavingsPhp": 2110292.756,
+        "netGainPhp": 1705914.963,
+        "paybackYears": 3.6448,
+        "npvPhp": 541932.6682,
+        "irr": 0.2801,
+        "lcoePhpPerKwh": 5.0334,
+        "year1SavingsPhp": 70284,
+        "finalYear": {
+          "year": 25,
+          "productionKwh": 5319.9211,
+          "savingsPhp": 100233.8773,
+          "netPhp": 94135.495,
+          "cumulativePhp": 1705914.963
+        }
+      }
+    },
+    {
+      "label": "no escalation",
+      "input": {
+        "systemCostPhp": 250000,
+        "year1Kwh": 6000,
+        "degradationPct": 0.5,
+        "ratePhpPerKwh": 15.06,
+        "exportCreditPhpPerKwh": 5.5,
+        "escalationPct": 0,
+        "selfUsePct": 65,
+        "omPhpPerYear": 3000,
+        "inflationPct": 3,
+        "inverterReplaceYear": 12,
+        "inverterReplaceCostPhp": 45000,
+        "years": 25,
+        "discountPct": 8
+      },
+      "expected": {
+        "totalSavingsPhp": 1655606.4889,
+        "netGainPhp": 1251228.696,
+        "paybackYears": 3.7501,
+        "npvPhp": 410826.784,
+        "irr": 0.2586,
+        "lcoePhpPerKwh": 5.0334,
+        "year1SavingsPhp": 70284,
+        "finalYear": {
+          "year": 25,
+          "productionKwh": 5319.9211,
+          "savingsPhp": 62317.5553,
+          "netPhp": 56219.173,
+          "cumulativePhp": 1251228.696
+        }
+      }
+    },
+    {
+      "label": "all self-used",
+      "input": {
+        "systemCostPhp": 250000,
+        "year1Kwh": 6000,
+        "degradationPct": 0.5,
+        "ratePhpPerKwh": 15.06,
+        "exportCreditPhpPerKwh": 5.5,
+        "escalationPct": 2,
+        "selfUsePct": 100,
+        "omPhpPerYear": 3000,
+        "inflationPct": 3,
+        "inverterReplaceYear": 12,
+        "inverterReplaceCostPhp": 45000,
+        "years": 25,
+        "discountPct": 8
+      },
+      "expected": {
+        "totalSavingsPhp": 2713079.128,
+        "netGainPhp": 2308701.335,
+        "paybackYears": 2.8235,
+        "npvPhp": 785144.3771,
+        "irr": 0.362,
+        "lcoePhpPerKwh": 5.0334,
+        "year1SavingsPhp": 90360,
+        "finalYear": {
+          "year": 25,
+          "productionKwh": 5319.9211,
+          "savingsPhp": 128864.7936,
+          "netPhp": 122766.4113,
+          "cumulativePhp": 2308701.335
+        }
+      }
+    },
+    {
+      "label": "business, high self-use, 10 yrs",
+      "input": {
+        "systemCostPhp": 1200000,
+        "year1Kwh": 30000,
+        "degradationPct": 0.5,
+        "ratePhpPerKwh": 15.06,
+        "exportCreditPhpPerKwh": 5.5,
+        "escalationPct": 2,
+        "selfUsePct": 95,
+        "omPhpPerYear": 3000,
+        "inflationPct": 3,
+        "inverterReplaceYear": 0,
+        "inverterReplaceCostPhp": 45000,
+        "years": 10,
+        "discountPct": 8
+      },
+      "expected": {
+        "totalSavingsPhp": 4679880.781,
+        "netGainPhp": 3445489.143,
+        "paybackYears": 2.7256,
+        "npvPhp": 1888452.3822,
+        "irr": 0.357,
+        "lcoePhpPerKwh": 6.1921,
+        "year1SavingsPhp": 437460,
+        "finalYear": {
+          "year": 10,
+          "productionKwh": 28676.6874,
+          "savingsPhp": 499744.0375,
+          "netPhp": 495829.7179,
+          "cumulativePhp": 3445489.143
+        }
+      }
+    },
+    {
+      "label": "never pays back",
+      "input": {
+        "systemCostPhp": 5000000,
+        "year1Kwh": 6000,
+        "degradationPct": 0.5,
+        "ratePhpPerKwh": 15.06,
+        "exportCreditPhpPerKwh": 5.5,
+        "escalationPct": 2,
+        "selfUsePct": 65,
+        "omPhpPerYear": 3000,
+        "inflationPct": 3,
+        "inverterReplaceYear": 12,
+        "inverterReplaceCostPhp": 45000,
+        "years": 25,
+        "discountPct": 8
+      },
+      "expected": {
+        "totalSavingsPhp": 2110292.756,
+        "netGainPhp": -3044085.037,
+        "paybackYears": null,
+        "npvPhp": -4208067.3318,
+        "irr": -0.0594,
+        "lcoePhpPerKwh": 82.2753,
+        "year1SavingsPhp": 70284,
+        "finalYear": {
+          "year": 25,
+          "productionKwh": 5319.9211,
+          "savingsPhp": 100233.8773,
+          "netPhp": 94135.495,
+          "cumulativePhp": -3044085.037
+        }
+      }
+    },
+    {
+      "label": "no O&M or replacement",
+      "input": {
+        "systemCostPhp": 250000,
+        "year1Kwh": 6000,
+        "degradationPct": 0.5,
+        "ratePhpPerKwh": 15.06,
+        "exportCreditPhpPerKwh": 5.5,
+        "escalationPct": 2,
+        "selfUsePct": 65,
+        "omPhpPerYear": 0,
+        "inflationPct": 3,
+        "inverterReplaceYear": 0,
+        "inverterReplaceCostPhp": 45000,
+        "years": 25,
+        "discountPct": 8
+      },
+      "expected": {
+        "totalSavingsPhp": 2110292.756,
+        "netGainPhp": 1860292.756,
+        "paybackYears": 3.4899,
+        "npvPhp": 601459.0433,
+        "irr": 0.2954,
+        "lcoePhpPerKwh": 4.0654,
+        "year1SavingsPhp": 70284,
+        "finalYear": {
+          "year": 25,
+          "productionKwh": 5319.9211,
+          "savingsPhp": 100233.8773,
+          "netPhp": 100233.8773,
+          "cumulativePhp": 1860292.756
+        }
+      }
+    }
+  ]
+}

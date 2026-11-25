@@ -1,0 +1,72 @@
+{
+  "function": "stringFuse",
+  "defaults": {
+    "ratePhpPerKwh": 15.06,
+    "yieldKwhPerKwpDay": 4,
+    "panelWatts": 600,
+    "panelAreaM2": 2.6,
+    "priceLowPerKwp": 50000,
+    "priceHighPerKwp": 70000,
+    "exportCreditPhpPerKwh": 5.5,
+    "daysPerMonth": 30
+  },
+  "tolerance": 0.01,
+  "vectors": [
+    {
+      "label": "2 strings",
+      "input": {
+        "isc": 14.3,
+        "parallelStrings": 2,
+        "moduleMaxSeriesFuseA": 25
+      },
+      "expected": {
+        "minRatingA": 22.308,
+        "suggestedFuseA": 25,
+        "fuseRequired": false,
+        "withinModuleMax": true
+      }
+    },
+    {
+      "label": "3 strings",
+      "input": {
+        "isc": 14.3,
+        "parallelStrings": 3,
+        "moduleMaxSeriesFuseA": 25
+      },
+      "expected": {
+        "minRatingA": 22.308,
+        "suggestedFuseA": 25,
+        "fuseRequired": true,
+        "withinModuleMax": true
+      }
+    },
+    {
+      "label": "high Isc beyond list",
+      "input": {
+        "isc": 21,
+        "parallelStrings": 3,
+        "moduleMaxSeriesFuseA": 35
+      },
+      "expected": {
+        "minRatingA": 32.76,
+        "suggestedFuseA": null,
+        "fuseRequired": true,
+        "withinModuleMax": false
+      }
+    },
+    {
+      "label": "module max too low",
+      "input": {
+        "isc": 14.3,
+        "parallelStrings": 4,
+        "moduleMaxSeriesFuseA": 20
+      },
+      "expected": {
+        "minRatingA": 22.308,
+        "suggestedFuseA": 25,
+        "fuseRequired": true,
+        "withinModuleMax": false
+      }
+    }
+  ]
+}

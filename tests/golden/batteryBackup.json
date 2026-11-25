@@ -1,0 +1,112 @@
+{
+  "function": "batteryBackup",
+  "defaults": {
+    "ratePhpPerKwh": 15.06,
+    "yieldKwhPerKwpDay": 4,
+    "panelWatts": 600,
+    "panelAreaM2": 2.6,
+    "priceLowPerKwp": 50000,
+    "priceHighPerKwp": 70000,
+    "exportCreditPhpPerKwh": 5.5,
+    "daysPerMonth": 30
+  },
+  "tolerance": 0.01,
+  "vectors": [
+    {
+      "label": "essentials 6 h",
+      "input": {
+        "essentialLoadW": 400,
+        "backupHours": 6,
+        "aircondW": 0,
+        "aircondHours": 0,
+        "depthOfDischargePct": 90,
+        "inverterEfficiencyPct": 90
+      },
+      "expected": {
+        "neededKwh": 2.4,
+        "nominalKwh": 2.963,
+        "hybridInverterMinKw": 0.5
+      }
+    },
+    {
+      "label": "with 1.5 HP aircon 3 h",
+      "input": {
+        "essentialLoadW": 400,
+        "backupHours": 6,
+        "aircondW": 1100,
+        "aircondHours": 3,
+        "depthOfDischargePct": 90,
+        "inverterEfficiencyPct": 90
+      },
+      "expected": {
+        "neededKwh": 5.7,
+        "nominalKwh": 7.037,
+        "hybridInverterMinKw": 1.875
+      }
+    },
+    {
+      "label": "lead-acid 50% DoD",
+      "input": {
+        "essentialLoadW": 400,
+        "backupHours": 6,
+        "aircondW": 0,
+        "aircondHours": 0,
+        "depthOfDischargePct": 50,
+        "inverterEfficiencyPct": 90
+      },
+      "expected": {
+        "neededKwh": 2.4,
+        "nominalKwh": 5.3333,
+        "hybridInverterMinKw": 0.5
+      }
+    },
+    {
+      "label": "zero DoD (invalid)",
+      "input": {
+        "essentialLoadW": 400,
+        "backupHours": 6,
+        "aircondW": 0,
+        "aircondHours": 0,
+        "depthOfDischargePct": 0,
+        "inverterEfficiencyPct": 90
+      },
+      "expected": {
+        "neededKwh": 2.4,
+        "nominalKwh": null,
+        "hybridInverterMinKw": 0.5
+      }
+    },
+    {
+      "label": "overnight 12 h",
+      "input": {
+        "essentialLoadW": 300,
+        "backupHours": 12,
+        "aircondW": 750,
+        "aircondHours": 6,
+        "depthOfDischargePct": 90,
+        "inverterEfficiencyPct": 92
+      },
+      "expected": {
+        "neededKwh": 8.1,
+        "nominalKwh": 9.7826,
+        "hybridInverterMinKw": 1.3125
+      }
+    },
+    {
+      "label": "tiny 1 h",
+      "input": {
+        "essentialLoadW": 100,
+        "backupHours": 1,
+        "aircondW": 0,
+        "aircondHours": 0,
+        "depthOfDischargePct": 100,
+        "inverterEfficiencyPct": 100
+      },
+      "expected": {
+        "neededKwh": 0.1,
+        "nominalKwh": 0.1,
+        "hybridInverterMinKw": 0.125
+      }
+    }
+  ]
+}

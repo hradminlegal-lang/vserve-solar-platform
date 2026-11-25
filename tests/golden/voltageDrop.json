@@ -1,0 +1,124 @@
+{
+  "function": "voltageDrop",
+  "defaults": {
+    "ratePhpPerKwh": 15.06,
+    "yieldKwhPerKwpDay": 4,
+    "panelWatts": 600,
+    "panelAreaM2": 2.6,
+    "priceLowPerKwp": 50000,
+    "priceHighPerKwp": 70000,
+    "exportCreditPhpPerKwh": 5.5,
+    "daysPerMonth": 30
+  },
+  "tolerance": 0.01,
+  "vectors": [
+    {
+      "label": "30 m, 4 mm² Cu",
+      "input": {
+        "voltage": 400,
+        "currentA": 13.5,
+        "lengthM": 30,
+        "areaMm2": 4,
+        "conductor": "copper",
+        "targetPct": 2
+      },
+      "expected": {
+        "dropV": 3.5438,
+        "dropPct": 0.8859,
+        "lossW": 47.8406,
+        "ok": true,
+        "minSizeMm2": 2.5
+      }
+    },
+    {
+      "label": "230 V AC, 2.5 mm², 40 m fails",
+      "input": {
+        "voltage": 230,
+        "currentA": 20,
+        "lengthM": 40,
+        "areaMm2": 2.5,
+        "conductor": "copper",
+        "targetPct": 2
+      },
+      "expected": {
+        "dropV": 11.2,
+        "dropPct": 4.8696,
+        "lossW": 224,
+        "ok": false,
+        "minSizeMm2": 10
+      }
+    },
+    {
+      "label": "aluminium",
+      "input": {
+        "voltage": 400,
+        "currentA": 13.5,
+        "lengthM": 30,
+        "areaMm2": 4,
+        "conductor": "aluminium",
+        "targetPct": 2
+      },
+      "expected": {
+        "dropV": 5.7105,
+        "dropPct": 1.4276,
+        "lossW": 77.0917,
+        "ok": true,
+        "minSizeMm2": 4
+      }
+    },
+    {
+      "label": "no size fits",
+      "input": {
+        "voltage": 48,
+        "currentA": 100,
+        "lengthM": 50,
+        "areaMm2": 16,
+        "conductor": "copper",
+        "targetPct": 1
+      },
+      "expected": {
+        "dropV": 10.9375,
+        "dropPct": 22.7865,
+        "lossW": 1093.75,
+        "ok": false,
+        "minSizeMm2": null
+      }
+    },
+    {
+      "label": "short run",
+      "input": {
+        "voltage": 400,
+        "currentA": 10,
+        "lengthM": 5,
+        "areaMm2": 4,
+        "conductor": "copper",
+        "targetPct": 1
+      },
+      "expected": {
+        "dropV": 0.4375,
+        "dropPct": 0.1094,
+        "lossW": 4.375,
+        "ok": true,
+        "minSizeMm2": 2.5
+      }
+    },
+    {
+      "label": "3% target",
+      "input": {
+        "voltage": 230,
+        "currentA": 20,
+        "lengthM": 40,
+        "areaMm2": 6,
+        "conductor": "copper",
+        "targetPct": 3
+      },
+      "expected": {
+        "dropV": 4.6667,
+        "dropPct": 2.029,
+        "lossW": 93.3333,
+        "ok": true,
+        "minSizeMm2": 6
+      }
+    }
+  ]
+}

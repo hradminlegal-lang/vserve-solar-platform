@@ -1,0 +1,124 @@
+{
+  "function": "loanVsSavings",
+  "defaults": {
+    "ratePhpPerKwh": 15.06,
+    "yieldKwhPerKwpDay": 4,
+    "panelWatts": 600,
+    "panelAreaM2": 2.6,
+    "priceLowPerKwp": 50000,
+    "priceHighPerKwp": 70000,
+    "exportCreditPhpPerKwh": 5.5,
+    "daysPerMonth": 30
+  },
+  "tolerance": 0.01,
+  "vectors": [
+    {
+      "label": "5y at 9%",
+      "input": {
+        "pricePhp": 250000,
+        "downPaymentPhp": 25000,
+        "annualRatePct": 9,
+        "termYears": 5,
+        "monthlySavingsPhp": 4800,
+        "escalationPct": 0
+      },
+      "expected": {
+        "monthlyPayment": 4670.6299,
+        "monthlyCashFlow": 129.3701,
+        "totalInterest": 55237.7956,
+        "netGain25y": 1134762.2044,
+        "breakEvenMonth": 64
+      }
+    },
+    {
+      "label": "zero interest",
+      "input": {
+        "pricePhp": 240000,
+        "downPaymentPhp": 0,
+        "annualRatePct": 0,
+        "termYears": 2,
+        "monthlySavingsPhp": 4000,
+        "escalationPct": 0
+      },
+      "expected": {
+        "monthlyPayment": 10000,
+        "monthlyCashFlow": -6000,
+        "totalInterest": 0,
+        "netGain25y": 960000,
+        "breakEvenMonth": 60
+      }
+    },
+    {
+      "label": "cash purchase",
+      "input": {
+        "pricePhp": 250000,
+        "downPaymentPhp": 250000,
+        "annualRatePct": 9,
+        "termYears": 5,
+        "monthlySavingsPhp": 4800,
+        "escalationPct": 0
+      },
+      "expected": {
+        "monthlyPayment": 0,
+        "monthlyCashFlow": 4800,
+        "totalInterest": 0,
+        "netGain25y": 1190000,
+        "breakEvenMonth": 53
+      }
+    },
+    {
+      "label": "with 3% escalation",
+      "input": {
+        "pricePhp": 250000,
+        "downPaymentPhp": 25000,
+        "annualRatePct": 9,
+        "termYears": 5,
+        "monthlySavingsPhp": 4800,
+        "escalationPct": 3
+      },
+      "expected": {
+        "monthlyPayment": 4670.6299,
+        "monthlyCashFlow": 129.3701,
+        "totalInterest": 55237.7956,
+        "netGain25y": 1794815.8294,
+        "breakEvenMonth": 60
+      }
+    },
+    {
+      "label": "20y mortgage",
+      "input": {
+        "pricePhp": 500000,
+        "downPaymentPhp": 0,
+        "annualRatePct": 7,
+        "termYears": 20,
+        "monthlySavingsPhp": 6000,
+        "escalationPct": 0
+      },
+      "expected": {
+        "monthlyPayment": 3876.4947,
+        "monthlyCashFlow": 2123.5053,
+        "totalInterest": 430358.7227,
+        "netGain25y": 869641.2773,
+        "breakEvenMonth": 1
+      }
+    },
+    {
+      "label": "never breaks even",
+      "input": {
+        "pricePhp": 500000,
+        "downPaymentPhp": 0,
+        "annualRatePct": 18,
+        "termYears": 5,
+        "monthlySavingsPhp": 500,
+        "escalationPct": 0
+      },
+      "expected": {
+        "monthlyPayment": 12696.7137,
+        "monthlyCashFlow": -12196.7137,
+        "totalInterest": 261802.8228,
+        "netGain25y": -611802.8228,
+        "breakEvenMonth": null
+      }
+    }
+  ]
+}

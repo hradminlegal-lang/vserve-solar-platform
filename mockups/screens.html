@@ -1,0 +1,244 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VServe Solar Platform mockups</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{--ink:#13202d;--muted:#566576;--f-display:"Bricolage Grotesque",system-ui,sans-serif;--f-body:"Atkinson Hyperlegible",system-ui,sans-serif;--f-mono:"JetBrains Mono",monospace}
+body{margin:0;padding:24px;background:#e9edf2;font-family:var(--f-body);color:var(--ink)}
+h1{font-family:var(--f-display);margin:0 0 4px} h2{font-family:var(--f-display);margin:28px 0 12px} p.intro{margin:0 0 12px;color:var(--muted);max-width:80ch}
+.phones{flex-wrap:wrap;overflow:visible}
+.sat{position:relative;height:120px;border-radius:10px;overflow:hidden;background:radial-gradient(circle at 20% 30%,#5f7a4f 0 18%,transparent 19%),radial-gradient(circle at 85% 75%,#4d6a42 0 16%,transparent 17%),linear-gradient(135deg,#7d8a78,#9aa08f 40%,#8a8f83 70%,#6f7a68)}
+.sat.big{height:100%}
+.sat-tag{position:absolute;left:6px;bottom:5px;font-size:8px;background:rgba(15,42,67,.85);color:#eaf1f8;padding:2px 6px;border-radius:99px}
+.roofp{position:absolute;background:rgba(190,196,200,.85);border:1.5px solid #e9a316;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding:6px;transform:rotate(-8deg)}
+.roofp i{background:#1c3550;border:1px solid #6c88a6;border-radius:1px}
+.roofp.p2{background:rgba(170,176,180,.8);border-color:#c9d2dc;transform:rotate(-8deg)}
+.obst{position:absolute;width:22px;height:22px;border-radius:50%;background:#cfd6dc;border:2px dashed #b42828}
+.desk-wrap{display:flex;flex-direction:column;gap:28px}
+.desk{margin:0;display:flex;flex-direction:column;gap:8px}
+.desk figcaption{font-size:.9rem;max-width:80ch}
+.dk{width:1180px;height:560px;border:1px solid #c9d2dc;border-radius:12px;background:#f7f8fa;overflow:hidden;display:flex;flex-direction:column;font-size:12px;box-shadow:0 1px 0 #c9d2dc}
+.dk-top{display:flex;align-items:center;gap:18px;padding:10px 16px;background:#0f2a43;color:#eaf1f8}
+.dk-top b{font-family:var(--f-display);font-size:14px}
+.dk-nav{display:flex;gap:4px} .dk-nav span{padding:5px 10px;border-radius:99px;color:#a9bdd1} .dk-nav span.on{background:#e9a316;color:#13202d;font-weight:700}
+.dk-top .m-chip{margin-left:auto} .m-btn.sm{padding:6px 12px;font-size:11px;display:inline-block}
+.dk-top .m-btn.sm{margin-left:auto}
+.dk-sub{display:flex;gap:22px;align-items:center;padding:10px 16px;border-bottom:1px solid #dfe5ec;background:#fff}
+.board{flex:1;display:grid;grid-template-columns:repeat(6,1fr);gap:10px;padding:12px 16px}
+.col{background:#eef2f6;border-radius:10px;padding:8px;display:flex;flex-direction:column;gap:7px}
+.col h5{margin:0 0 2px;font-size:12px;display:flex;justify-content:space-between} .col h5 i{font-style:normal;color:#6a7988}
+.kc{background:#fff;border:1px solid #e1e6ec;border-radius:8px;padding:8px;display:flex;flex-direction:column;gap:3px}
+.kc span{color:#6a7988;font-size:11px} .kc .m-chip{align-self:flex-start} .kc.od{border-color:#b42828}
+.studio{flex:1;display:grid;grid-template-columns:190px 1fr 280px;min-height:0}
+.tools,.panel{background:#fff;padding:12px;display:flex;flex-direction:column;gap:6px;overflow:hidden}
+.tools{border-right:1px solid #dfe5ec} .panel{border-left:1px solid #dfe5ec}
+.tools span{color:#3b4a59} .tools hr,.panel hr{border:0;border-top:1px solid #e1e6ec;width:100%}
+.canvas{padding:10px}
+.studio .roofp{grid-template-columns:repeat(3,1fr);gap:6px;padding:12px}
+.kv{display:flex;justify-content:space-between;gap:8px} .kv span{color:#6a7988}
+.kv.big b{font-size:18px;font-family:var(--f-display)}
+.bars{display:flex;align-items:flex-end;gap:4px;height:60px;padding:4px 0} .bars i{flex:1;background:#e9a316;border-radius:2px 2px 0 0}
+.warn{background:#fbf0d4;color:#7a5400;border-radius:6px;padding:5px 7px;font-size:11px}
+.ok{background:#e2f4ea;color:#1d7f47;border-radius:6px;padding:5px 7px;font-size:11px}
+.qm{flex:1;display:grid;grid-template-columns:1fr 300px;gap:14px;padding:14px 16px}
+.qt{border-collapse:collapse;width:100%;background:#fff;border:1px solid #e1e6ec;border-radius:8px;align-self:start}
+.qt th,.qt td{padding:9px 10px;border-bottom:1px solid #eef2f6;text-align:left} .qt th{font-size:10px;text-transform:uppercase;color:#6a7988;background:#f3f6f9}
+.qt td:nth-child(n+2),.qt th:nth-child(n+2){text-align:right}
+.qside{background:#fff;border:1px solid #e1e6ec;border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:8px;align-self:start}
+
+.phones{display:flex; gap:20px; overflow-x:auto; padding:6px 2px 18px; scroll-snap-type:x mandatory}
+.phwrap{flex:0 0 auto; scroll-snap-align:start; display:flex; flex-direction:column; gap:10px; width:262px}
+.ph{width:262px; height:540px; border-radius:30px; border:8px solid var(--ink); background:var(--ink); overflow:hidden; position:relative}
+.ph-s{position:absolute; inset:0; background:#f7f8fa; color:#13202d; border-radius:22px; overflow:hidden; display:flex; flex-direction:column; font-family:var(--f-body); font-size:11px; line-height:1.4}
+.ph-top{height:22px; display:flex; justify-content:space-between; align-items:center; padding:0 14px; font-size:9px; color:#566576}
+.ph-bar{padding:6px 12px 8px; display:flex; align-items:center; gap:8px}
+.ph-bar b{font-family:var(--f-display); font-size:14px}
+.ph-body{flex:1; overflow:hidden; padding:0 12px; display:flex; flex-direction:column; gap:8px}
+.ph-tabs{height:46px; border-top:1px solid #dfe5ec; display:grid; grid-template-columns:repeat(5,1fr); font-size:8.5px; color:#788796; text-align:center; align-items:center; background:#fff}
+.ph-tabs span.on{color:#8f5e00; font-weight:700}
+.ph-tabs span::before{content:""; display:block; width:16px; height:16px; margin:0 auto 2px; border-radius:5px; background:currentColor; opacity:.35}
+.ph-tabs span.on::before{opacity:1; background:#e9a316}
+.m-card{background:#fff; border:1px solid #e1e6ec; border-radius:10px; padding:9px}
+.m-hero{background:#0f2a43; color:#eaf1f8; border-radius:12px; padding:12px}
+.m-hero b{font-family:var(--f-display); font-size:15px; display:block; line-height:1.2}
+.m-btn{display:block; text-align:center; background:#e9a316; color:#13202d; font-weight:700; border-radius:9px; padding:9px; font-size:11.5px}
+.m-btn.ghost{background:transparent; border:1px solid #c9d2dc; color:#13202d}
+.m-row{display:flex; justify-content:space-between; gap:6px; align-items:center}
+.m-chip{display:inline-block; font-size:8.5px; padding:2px 6px; border-radius:99px; background:#eef2f6; color:#566576}
+.m-chip.g{background:#e2f4ea; color:#1d7f47} .m-chip.s{background:#fdf1d6; color:#8f5e00} .m-chip.r{background:#fbe4e4; color:#b42828}
+.m-big{font-family:var(--f-display); font-size:22px; font-weight:800; line-height:1.1}
+.m-mut{color:#6a7988; font-size:9.5px}
+.m-grid2{display:grid; grid-template-columns:1fr 1fr; gap:6px}
+.m-avatar{width:28px; height:28px; border-radius:50%; background:#d4dde7; flex:0 0 auto}
+.m-img{height:70px; border-radius:8px; background:repeating-linear-gradient(45deg,#e4e9ef 0 8px,#eef2f6 8px 16px)}
+.m-stars{color:#e9a316; letter-spacing:1px}
+.m-bar{height:6px; background:#e1e6ec; border-radius:9px; overflow:hidden} .m-bar i{display:block; height:100%; background:#e9a316}
+.cap{font-size:.88rem} .cap b{font-family:var(--f-display)}
+</style></head><body>
+<h1>VServe Solar Platform — key screens</h1>
+<p class="intro">Customer screens at phone size; company workspace screens at desktop size (shown scaled). Layout, hierarchy and copy are the intent; colours and components follow docs/design-system.md. Companies, people, brands and prices are placeholders. Figures are computed with docs/calc-reference.js for one example house: Meralco customer using 600 kWh a month, 5.4 kWp system.</p>
+
+<h2>Customer</h2>
+<div class="phones">
+  <!-- C1 roof check -->
+  <div class="phwrap"><div class="ph"><div class="ph-s">
+    <div class="ph-top"><span>9:41</span><span>LTE ▮▮▮</span></div>
+    <div class="ph-bar"><span>←</span><b>Roof check</b></div>
+    <div class="ph-body">
+      <div class="m-card" style="padding:6px"><span class="m-mut">Blk 4 Lot 12, Molino III, Bacoor</span></div>
+      <div class="sat"><div class="roofp" style="left:22%;top:24%;width:56%;height:46%"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="sat-tag">Satellite · Google Solar API · base quality</span></div>
+      <div class="m-grid2">
+        <div class="m-card"><div class="m-mut">Fits about</div><b>9 panels · 5.4 kWp</b></div>
+        <div class="m-card"><div class="m-mut">Best roof side</div><b>South-east, 15°</b></div>
+        <div class="m-card"><div class="m-mut">Makes per year</div><b>~7,230 kWh</b></div>
+        <div class="m-card"><div class="m-mut">Your usage</div><b>7,200 kWh</b></div>
+      </div>
+      <div class="m-card"><b>Covers about 100% of your usage</b><p class="m-mut">Estimate from satellite data. A company confirms on site.</p></div>
+      <span class="m-btn">Get proposals from 3 companies</span>
+    </div>
+    <div class="ph-tabs"><span class="on">Home</span><span>Calculate</span><span>Shop</span><span>Companies</span><span>Me</span></div>
+  </div></div><p class="cap"><b>C1 Roof check.</b> Address in, roof traced from satellite data, panels and yield out. Shows the data source and quality so nobody oversells.</p></div>
+
+  <!-- C2 savings -->
+  <div class="phwrap"><div class="ph"><div class="ph-s">
+    <div class="ph-top"><span>9:42</span><span>LTE ▮▮▮</span></div>
+    <div class="ph-bar"><span>←</span><b>Savings over 25 years</b></div>
+    <div class="ph-body">
+      <div class="m-card"><div class="m-mut">5.4 kWp at ₱290,000</div><div class="m-big">₱2.54M saved</div><div class="m-mut">Net of upkeep and one inverter replacement: ₱2.10M</div></div>
+      <div class="m-card" style="padding:8px">
+        <svg viewBox="0 0 220 80" width="100%" height="80" aria-label="Cumulative savings crossing zero in year 4">
+          <line x1="10" y1="52" x2="215" y2="52" stroke="#c9d2dc"/>
+          <polyline fill="none" stroke="#e9a316" stroke-width="2" points="10,70 18,63 26,56 34,50 42,44 50,38 58,32 66,26 74,22 82,18 90,15 98,18 106,14 114,12 122,10 130,9 138,8 146,7 154,6 162,6 170,5 178,5 186,4 194,4 202,4"/>
+          <circle cx="36" cy="52" r="3" fill="#13202d"/><text x="40" y="47" font-size="8" fill="#13202d">pays back ~3.5 yrs</text>
+          <text x="10" y="78" font-size="7" fill="#6a7988">Year 1</text><text x="185" y="78" font-size="7" fill="#6a7988">Year 25</text>
+        </svg>
+      </div>
+      <div class="m-grid2">
+        <div class="m-card"><div class="m-mut">Year-1 savings</div><b>₱84,670</b></div>
+        <div class="m-card"><div class="m-mut">Return (IRR)</div><b>29% a year</b></div>
+        <div class="m-card"><div class="m-mut">Cost per kWh</div><b>₱4.72</b></div>
+        <div class="m-card"><div class="m-mut">Meralco now</div><b>₱15.06</b></div>
+      </div>
+      <div class="m-card"><div class="m-row"><span class="m-mut">Rates rise per year</span><b>2%</b></div><div class="m-bar" style="margin-top:5px"><i style="width:30%"></i></div></div>
+      <span class="m-btn">How can I pay for this?</span>
+    </div>
+    <div class="ph-tabs"><span>Home</span><span class="on">Calculate</span><span>Shop</span><span>Companies</span><span>Me</span></div>
+  </div></div><p class="cap"><b>C2 Savings.</b> The 25-year model in plain words: payback, return and cost per kWh compared with the Meralco rate.</p></div>
+
+  <!-- C3 compare -->
+  <div class="phwrap"><div class="ph"><div class="ph-s">
+    <div class="ph-top"><span>9:43</span><span>LTE ▮▮▮</span></div>
+    <div class="ph-bar"><span>←</span><b>3 proposals</b></div>
+    <div class="ph-body">
+      <div class="m-card"><div class="m-row"><b>Company A</b><span class="m-chip g">Score 100</span></div><div class="m-row m-mut"><span>5.4 kWp grid-tied · ₱312,000</span><span>₱57,800/kWp</span></div><div class="m-mut">All 12 items in writing · claim checks out · ★ 4.8 (41)</div></div>
+      <div class="m-card"><div class="m-row"><b>Company B</b><span class="m-chip s">Score 75</span></div><div class="m-row m-mut"><span>5.0 kWp grid-tied · ₱268,000</span><span>₱53,600/kWp</span></div><div class="m-mut">Claims 880 kWh/month, expect ~600 · panel model missing</div></div>
+      <div class="m-card"><div class="m-row"><b>Company C</b><span class="m-chip g">Score 97</span></div><div class="m-row m-mut"><span>5.5 kWp hybrid + 10 kWh · ₱455,000</span><span>₱55,500/kWp</span></div><div class="m-mut">Battery ₱150,000 shown separately · 10 h backup for essentials</div></div>
+      <div class="m-card"><b>Ask VServe</b><p class="m-mut">"Is the battery worth it?" → It adds backup, not much saving. Worth it if brownouts cost you work.</p></div>
+      <span class="m-btn">View Company A proposal</span>
+    </div>
+    <div class="ph-tabs"><span>Home</span><span>Calculate</span><span>Shop</span><span class="on">Companies</span><span>Me</span></div>
+  </div></div><p class="cap"><b>C3 Compare.</b> Proposals from different companies on one fair basis: price per kWp with battery removed, production claim checked.</p></div>
+
+  <!-- C4 loans -->
+  <div class="phwrap"><div class="ph"><div class="ph-s">
+    <div class="ph-top"><span>9:44</span><span>LTE ▮▮▮</span></div>
+    <div class="ph-bar"><span>←</span><b>How to pay</b></div>
+    <div class="ph-body">
+      <div class="m-card"><div class="m-mut">₱290,000 system · saves ~₱7,060/month</div><b>3 options checked Nov 20</b></div>
+      <div class="m-card" style="border-color:#1d7f47"><div class="m-row"><b>Housing fund loan</b><span class="m-chip g">+₱1,640/mo</span></div><div class="m-mut">9% · 5 years · 10% down</div><div class="m-row" style="margin-top:3px"><span>₱5,418/month</span><span class="m-mut">₱30,300 upfront</span></div></div>
+      <div class="m-card"><div class="m-row"><b>Personal loan</b><span class="m-chip r">−₱2,860/mo</span></div><div class="m-mut">14% · 3 years</div><div class="m-row" style="margin-top:3px"><span>₱9,912/month</span><span class="m-mut">₱5,800 fees</span></div></div>
+      <div class="m-card" style="opacity:.55"><div class="m-row"><b>Bank solar loan</b><span class="m-chip">Not eligible</span></div><div class="m-mut">Minimum loan ₱400,000</div></div>
+      <div class="m-card"><b>Can I afford it?</b><p class="m-mut">Add income and debts for an estimate. The lender decides.</p></div>
+      <span class="m-btn">Check if I qualify</span>
+    </div>
+    <div class="ph-tabs"><span>Home</span><span>Calculate</span><span>Shop</span><span>Companies</span><span class="on">Me</span></div>
+  </div></div><p class="cap"><b>C4 Loans.</b> Monthly payment against monthly savings for each lender, with dated rates and the reason an offer doesn't apply.</p></div>
+
+  <!-- C5 proposal -->
+  <div class="phwrap"><div class="ph"><div class="ph-s">
+    <div class="ph-top"><span>9:45</span><span>LTE ▮▮▮</span></div>
+    <div class="ph-bar"><b>Company A</b><span class="m-chip g" style="margin-left:auto">Verified</span></div>
+    <div class="ph-body">
+      <div class="m-mut">Proposal for Ana R. · valid until Dec 20</div>
+      <div class="sat" style="height:86px"><div class="roofp" style="left:24%;top:20%;width:52%;height:56%"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+      <div class="m-card"><div class="m-row"><b>5.4 kWp · 9 × 600 W</b><span class="m-mut">5 kW inverter</span></div><div class="m-mut">7,230 kWh a year · covers 100%</div></div>
+      <div class="m-card"><div class="m-row"><span class="m-mut">Choose a package</span></div>
+        <div class="m-row" style="margin-top:4px"><span>● Grid-tied</span><b>₱312,000</b></div>
+        <div class="m-row"><span class="m-mut">○ Hybrid + 5 kWh</span><span class="m-mut">₱398,000</span></div></div>
+      <div class="m-card"><div class="m-row"><span>Pay 30% · 60% · 10%</span><span class="m-mut">or loan from ₱5,830/mo</span></div></div>
+      <div class="m-card"><span class="m-mut">Full name</span><div style="border-bottom:1px solid #c9d2dc;height:14px"></div><span class="m-mut">☐ I agree to the terms</span></div>
+      <span class="m-btn">Accept proposal</span>
+    </div>
+    <div class="ph-tabs"><span>Overview</span><span>Roof</span><span>Savings</span><span>Equipment</span><span class="on">Accept</span></div>
+  </div></div><p class="cap"><b>C5 Proposal.</b> One company's online proposal: layout on their roof, packages, payment terms and loan option, accepted in the app.</p></div>
+</div>
+
+<h2>Company workspace</h2>
+<div class="desk-wrap">
+  <!-- W1 pipeline -->
+  <figure class="desk">
+    <div class="dk">
+      <div class="dk-top"><b>Company A</b><span class="dk-nav"><span class="on">Pipeline</span><span>Leads</span><span>Designs</span><span>Quotes</span><span>Campaigns</span><span>Store</span><span>Reports</span></span><span class="m-chip">Ana (Sales)</span></div>
+      <div class="dk-sub"><span>Pipeline value <b>₱8.4M</b></span><span>Won this month <b>6</b></span><span>Cost per lead (Meta) <b>₱410</b></span><span class="m-chip r">3 overdue</span><span style="margin-left:auto" class="m-btn sm">+ Lead</span></div>
+      <div class="board">
+        <div class="col"><h5>New <i>12</i></h5><div class="kc"><b>R. Santos</b><span>Bacoor · bill ₱9,000</span><span class="m-chip g">Hot</span> <span class="m-chip">Meta ad</span></div><div class="kc od"><b>J. Cruz</b><span>Imus · bill ₱6,200</span><span class="m-chip r">Contact overdue 3 h</span></div><div class="kc"><b>Sari-sari store</b><span>Dasmariñas · ₱14,000</span><span class="m-chip s">Warm</span></div></div>
+        <div class="col"><h5>Site survey <i>5</i></h5><div class="kc"><b>M. Reyes</b><span>Survey Thu 9 AM</span><span class="m-chip">Engineer: Leo</span></div><div class="kc"><b>Clinic</b><span>Survey done · 14 photos</span></div></div>
+        <div class="col"><h5>Design <i>4</i></h5><div class="kc"><b>A. Ramos</b><span>5.4 kWp · draft v2</span><span class="m-chip s">2 warnings</span></div><div class="kc"><b>School annex</b><span>24 kWp · signed off</span></div></div>
+        <div class="col"><h5>Proposal sent <i>7</i></h5><div class="kc"><b>Ana R.</b><span>₱312,000 · opened 3×</span><span class="m-chip g">Viewed savings</span></div><div class="kc"><b>P. Lim</b><span>₱520,000 · not opened</span></div></div>
+        <div class="col"><h5>Financing <i>2</i></h5><div class="kc"><b>D. Tan</b><span>Housing fund · docs sent</span></div></div>
+        <div class="col"><h5>Won <i>6</i></h5><div class="kc"><b>G. Aquino</b><span>₱298,000 · install Dec 2</span></div></div>
+      </div>
+    </div>
+    <figcaption><b>W1 Pipeline.</b> Every lead from ads, landing pages and the marketplace on one board, with source, score and overdue flags.</figcaption>
+  </figure>
+
+  <!-- W2 design studio -->
+  <figure class="desk">
+    <div class="dk">
+      <div class="dk-top"><b>Design · Ana R. · v2</b><span class="dk-nav"><span>Roof</span><span class="on">Layout</span><span>Shading</span><span>Energy</span><span>Electrical</span><span>BOM</span><span>Report</span></span><span class="m-btn sm">Send to quote</span></div>
+      <div class="studio">
+        <div class="tools"><b>Tools</b><span>✎ Draw roof plane</span><span>▢ Obstruction</span><span>⊘ Keep-out</span><span>▦ Auto-fill panels</span><span>↔ Measure</span><hr><b>Plane 1</b><span>Pitch 15° · Azimuth 135°</span><span>Setback 0.4 m · ridge 0.6 m</span><span>Landscape · gap 20 mm</span><hr><b>Panel</b><span>Brand X 600 W N-type</span></div>
+        <div class="canvas">
+          <div class="sat big"><div class="roofp p1" style="left:20%;top:22%;width:46%;height:44%"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="roofp p2" style="left:20%;top:68%;width:46%;height:14%"></div><div class="obst" style="left:58%;top:12%"></div><span class="sat-tag">Satellite · Solar API base quality · imagery 2025 · north ↑</span></div>
+        </div>
+        <div class="panel">
+          <b>System</b>
+          <div class="kv"><span>Panels</span><b>9</b></div><div class="kv"><span>DC size</span><b>5.40 kWp</b></div><div class="kv"><span>Inverter</span><b>5 kW · ratio 1.08</b></div><div class="kv"><span>Strings</span><b>1 × 9 (allowed 3–9)</b></div>
+          <b>Energy (PVWatts v8)</b>
+          <div class="kv"><span>Annual</span><b>7,228 kWh</b></div><div class="kv"><span>Specific yield</span><b>1,339 kWh/kWp</b></div><div class="kv"><span>Shading loss</span><b>3%</b></div>
+          <div class="bars"><i style="height:62%"></i><i style="height:70%"></i><i style="height:86%"></i><i style="height:92%"></i><i style="height:88%"></i><i style="height:74%"></i><i style="height:66%"></i><i style="height:64%"></i><i style="height:66%"></i><i style="height:70%"></i><i style="height:64%"></i><i style="height:60%"></i></div>
+          <b>Warnings</b>
+          <div class="warn">Water tank shades 2 panels 7–9 AM</div><div class="warn">DC run 28 m: use 6 mm² to stay under 2%</div>
+          <div class="m-mut" style="font-size:9px">Design estimate. Final design verified on site and signed by a licensed engineer.</div>
+        </div>
+      </div>
+    </div>
+    <figcaption><b>W2 Design studio.</b> Roof planes on satellite imagery, auto-filled layout, shading, simulated energy and electrical checks in one view; warnings block "Ready for quote".</figcaption>
+  </figure>
+
+  <!-- W3 quote maker -->
+  <figure class="desk">
+    <div class="dk">
+      <div class="dk-top"><b>Quote Q-0142 · Ana R. · from design v2</b><span class="dk-nav"><span class="on">Grid-tied</span><span>Hybrid 5 kWh</span><span>+ Option</span></span><span class="m-btn sm">Send proposal</span></div>
+      <div class="qm">
+        <table class="qt"><thead><tr><th>Item</th><th>Qty</th><th>Cost</th><th>Price</th></tr></thead><tbody>
+          <tr><td>Brand X 600 W N-type panel</td><td>9</td><td>₱46,800</td><td>₱66,857</td></tr>
+          <tr><td>5 kW grid-tied inverter</td><td>1</td><td>₱52,000</td><td>₱74,286</td></tr>
+          <tr><td>Rails, clamps, hooks (metal roof)</td><td>9 sets</td><td>₱21,600</td><td>₱30,857</td></tr>
+          <tr><td>DC/AC cable, MC4, isolators, SPD, breakers</td><td>1 lot</td><td>₱24,600</td><td>₱35,143</td></tr>
+          <tr><td>Labour and commissioning</td><td>5.4 kWp</td><td>₱32,400</td><td>₱46,286</td></tr>
+          <tr><td>Permits, CFEI, net-metering processing</td><td>1</td><td>₱17,600</td><td>₱25,143</td></tr>
+        </tbody></table>
+        <div class="qside">
+          <div class="kv"><span>Cost</span><b>₱195,000</b></div><div class="kv"><span>Margin</span><b>30%</b></div><div class="kv"><span>Price before VAT</span><b>₱278,571</b></div><div class="kv"><span>VAT 12%</span><b>₱33,429</b></div>
+          <div class="kv big"><span>Customer price</span><b>₱312,000</b></div><div class="kv"><span>Per kWp</span><b>₱57,778</b></div>
+          <div class="ok">In the ₱50k–70k per kWp range customers see in the quote checker</div>
+          <div class="kv"><span>Payment terms</span><b>30 / 60 / 10</b></div><div class="kv"><span>Valid until</span><b>Dec 20</b></div>
+          <div class="kv"><span>Standard fields</span><b>12 of 12 ✓</b></div>
+        </div>
+      </div>
+    </div>
+    <figcaption><b>W3 Quote maker.</b> BOM from the design, company costs and margin, VAT and the same price check customers see, so quotes go out complete and comparable.</figcaption>
+  </figure>
+</div>
+
+</body></html>

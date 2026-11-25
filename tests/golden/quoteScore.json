@@ -1,0 +1,304 @@
+{
+  "function": "quoteScore",
+  "defaults": {
+    "ratePhpPerKwh": 15.06,
+    "yieldKwhPerKwpDay": 4,
+    "panelWatts": 600,
+    "panelAreaM2": 2.6,
+    "priceLowPerKwp": 50000,
+    "priceHighPerKwp": 70000,
+    "exportCreditPhpPerKwh": 5.5,
+    "daysPerMonth": 30
+  },
+  "tolerance": 0.01,
+  "vectors": [
+    {
+      "label": "good quote",
+      "input": [
+        {
+          "totalPricePhp": 245000,
+          "kwp": 4.2,
+          "batteryPricePhp": 0,
+          "claimedKwhMonth": 500,
+          "itemsInWriting": 11
+        },
+        400
+      ],
+      "expected": {
+        "perKwp": 58333.3333,
+        "expectedKwh": 504,
+        "sizeRatio": 1.26,
+        "claimRatio": 0.9921,
+        "claimDeviation": 0.0079,
+        "priceFlag": "in_range",
+        "sizeFlag": "fits",
+        "claimFlag": "plausible",
+        "score": 98
+      }
+    },
+    {
+      "label": "cheap, vague, inflated claim",
+      "input": [
+        {
+          "totalPricePhp": 168000,
+          "kwp": 4,
+          "batteryPricePhp": 0,
+          "claimedKwhMonth": 720,
+          "itemsInWriting": 5
+        },
+        400
+      ],
+      "expected": {
+        "perKwp": 42000,
+        "expectedKwh": 480,
+        "sizeRatio": 1.2,
+        "claimRatio": 1.5,
+        "claimDeviation": 0.5,
+        "priceFlag": "below_range",
+        "sizeFlag": "fits",
+        "claimFlag": "too_high",
+        "score": 57
+      }
+    },
+    {
+      "label": "oversized hybrid",
+      "input": [
+        {
+          "totalPricePhp": 520000,
+          "kwp": 6.6,
+          "batteryPricePhp": 140000,
+          "claimedKwhMonth": 790,
+          "itemsInWriting": 9
+        },
+        400
+      ],
+      "expected": {
+        "perKwp": 57575.7576,
+        "expectedKwh": 792,
+        "sizeRatio": 1.98,
+        "claimRatio": 0.9975,
+        "claimDeviation": 0.0025,
+        "priceFlag": "in_range",
+        "sizeFlag": "oversized",
+        "claimFlag": "plausible",
+        "score": 70
+      }
+    },
+    {
+      "label": "exactly at low price edge",
+      "input": [
+        {
+          "totalPricePhp": 200000,
+          "kwp": 4,
+          "batteryPricePhp": 0,
+          "claimedKwhMonth": 480,
+          "itemsInWriting": 12
+        },
+        400
+      ],
+      "expected": {
+        "perKwp": 50000,
+        "expectedKwh": 480,
+        "sizeRatio": 1.2,
+        "claimRatio": 1,
+        "claimDeviation": 0,
+        "priceFlag": "in_range",
+        "sizeFlag": "fits",
+        "claimFlag": "plausible",
+        "score": 100
+      }
+    },
+    {
+      "label": "exactly at high price edge",
+      "input": [
+        {
+          "totalPricePhp": 280000,
+          "kwp": 4,
+          "batteryPricePhp": 0,
+          "claimedKwhMonth": 480,
+          "itemsInWriting": 12
+        },
+        400
+      ],
+      "expected": {
+        "perKwp": 70000,
+        "expectedKwh": 480,
+        "sizeRatio": 1.2,
+        "claimRatio": 1,
+        "claimDeviation": 0,
+        "priceFlag": "in_range",
+        "sizeFlag": "fits",
+        "claimFlag": "plausible",
+        "score": 100
+      }
+    },
+    {
+      "label": "very expensive",
+      "input": [
+        {
+          "totalPricePhp": 500000,
+          "kwp": 4,
+          "batteryPricePhp": 0,
+          "claimedKwhMonth": 480,
+          "itemsInWriting": 12
+        },
+        400
+      ],
+      "expected": {
+        "perKwp": 125000,
+        "expectedKwh": 480,
+        "sizeRatio": 1.2,
+        "claimRatio": 1,
+        "claimDeviation": 0,
+        "priceFlag": "above_range",
+        "sizeFlag": "fits",
+        "claimFlag": "plausible",
+        "score": 60
+      }
+    },
+    {
+      "label": "undersized",
+      "input": [
+        {
+          "totalPricePhp": 120000,
+          "kwp": 2,
+          "batteryPricePhp": 0,
+          "claimedKwhMonth": 240,
+          "itemsInWriting": 12
+        },
+        400
+      ],
+      "expected": {
+        "perKwp": 60000,
+        "expectedKwh": 240,
+        "sizeRatio": 0.6,
+        "claimRatio": 1,
+        "claimDeviation": 0,
+        "priceFlag": "in_range",
+        "sizeFlag": "undersized",
+        "claimFlag": "plausible",
+        "score": 90
+      }
+    },
+    {
+      "label": "claim too low",
+      "input": [
+        {
+          "totalPricePhp": 240000,
+          "kwp": 4,
+          "batteryPricePhp": 0,
+          "claimedKwhMonth": 300,
+          "itemsInWriting": 12
+        },
+        400
+      ],
+      "expected": {
+        "perKwp": 60000,
+        "expectedKwh": 480,
+        "sizeRatio": 1.2,
+        "claimRatio": 0.625,
+        "claimDeviation": 0.375,
+        "priceFlag": "in_range",
+        "sizeFlag": "fits",
+        "claimFlag": "too_low",
+        "score": 85
+      }
+    },
+    {
+      "label": "nothing in writing",
+      "input": [
+        {
+          "totalPricePhp": 240000,
+          "kwp": 4,
+          "batteryPricePhp": 0,
+          "claimedKwhMonth": 480,
+          "itemsInWriting": 0
+        },
+        400
+      ],
+      "expected": {
+        "perKwp": 60000,
+        "expectedKwh": 480,
+        "sizeRatio": 1.2,
+        "claimRatio": 1,
+        "claimDeviation": 0,
+        "priceFlag": "in_range",
+        "sizeFlag": "fits",
+        "claimFlag": "plausible",
+        "score": 80
+      }
+    },
+    {
+      "label": "items above 12 clamp",
+      "input": [
+        {
+          "totalPricePhp": 240000,
+          "kwp": 4,
+          "batteryPricePhp": 0,
+          "claimedKwhMonth": 480,
+          "itemsInWriting": 15
+        },
+        400
+      ],
+      "expected": {
+        "perKwp": 60000,
+        "expectedKwh": 480,
+        "sizeRatio": 1.2,
+        "claimRatio": 1,
+        "claimDeviation": 0,
+        "priceFlag": "in_range",
+        "sizeFlag": "fits",
+        "claimFlag": "plausible",
+        "score": 100
+      }
+    },
+    {
+      "label": "zero usage",
+      "input": [
+        {
+          "totalPricePhp": 240000,
+          "kwp": 4,
+          "batteryPricePhp": 0,
+          "claimedKwhMonth": 480,
+          "itemsInWriting": 12
+        },
+        0
+      ],
+      "expected": {
+        "perKwp": 60000,
+        "expectedKwh": 480,
+        "sizeRatio": 0,
+        "claimRatio": 1,
+        "claimDeviation": 0,
+        "priceFlag": "in_range",
+        "sizeFlag": "undersized",
+        "claimFlag": "plausible",
+        "score": 75
+      }
+    },
+    {
+      "label": "zero kWp (invalid)",
+      "input": [
+        {
+          "totalPricePhp": 240000,
+          "kwp": 0,
+          "batteryPricePhp": 0,
+          "claimedKwhMonth": 480,
+          "itemsInWriting": 12
+        },
+        400
+      ],
+      "expected": {
+        "perKwp": 0,
+        "expectedKwh": 0,
+        "sizeRatio": 0,
+        "claimRatio": 0,
+        "claimDeviation": 1,
+        "priceFlag": "below_range",
+        "sizeFlag": "undersized",
+        "claimFlag": "too_high",
+        "score": 20
+      }
+    }
+  ]
+}

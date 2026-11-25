@@ -1,0 +1,166 @@
+{
+  "function": "stringSizing",
+  "defaults": {
+    "ratePhpPerKwh": 15.06,
+    "yieldKwhPerKwpDay": 4,
+    "panelWatts": 600,
+    "panelAreaM2": 2.6,
+    "priceLowPerKwp": 50000,
+    "priceHighPerKwp": 70000,
+    "exportCreditPhpPerKwh": 5.5,
+    "daysPerMonth": 30
+  },
+  "tolerance": 0.01,
+  "vectors": [
+    {
+      "label": "lowland default",
+      "input": {
+        "voc": 53.2,
+        "vmp": 44.6,
+        "vocCoeffPct": -0.25,
+        "pmaxCoeffPct": -0.29,
+        "tMin": 18,
+        "tHot": 70,
+        "inverterMaxV": 600,
+        "mpptLow": 90,
+        "mpptHigh": 550,
+        "isc": 14.3,
+        "inverterMaxIsc": 20
+      },
+      "expected": {
+        "vocCold": 54.131,
+        "vmpHot": 38.7797,
+        "vmpCold": 45.5054,
+        "minPanels": 3,
+        "maxPanels": 11,
+        "valid": true,
+        "currentOk": true
+      }
+    },
+    {
+      "label": "Baguio cold 8 °C",
+      "input": {
+        "voc": 53.2,
+        "vmp": 44.6,
+        "vocCoeffPct": -0.25,
+        "pmaxCoeffPct": -0.29,
+        "tMin": 8,
+        "tHot": 70,
+        "inverterMaxV": 600,
+        "mpptLow": 90,
+        "mpptHigh": 550,
+        "isc": 14.3,
+        "inverterMaxIsc": 20
+      },
+      "expected": {
+        "vocCold": 55.461,
+        "vmpHot": 38.7797,
+        "vmpCold": 46.7988,
+        "minPanels": 3,
+        "maxPanels": 10,
+        "valid": true,
+        "currentOk": true
+      }
+    },
+    {
+      "label": "current too high",
+      "input": {
+        "voc": 53.2,
+        "vmp": 44.6,
+        "vocCoeffPct": -0.25,
+        "pmaxCoeffPct": -0.29,
+        "tMin": 18,
+        "tHot": 70,
+        "inverterMaxV": 600,
+        "mpptLow": 90,
+        "mpptHigh": 550,
+        "isc": 14.3,
+        "inverterMaxIsc": 13
+      },
+      "expected": {
+        "vocCold": 54.131,
+        "vmpHot": 38.7797,
+        "vmpCold": 45.5054,
+        "minPanels": 3,
+        "maxPanels": 11,
+        "valid": true,
+        "currentOk": false
+      }
+    },
+    {
+      "label": "narrow MPPT, no valid string",
+      "input": {
+        "voc": 53.2,
+        "vmp": 44.6,
+        "vocCoeffPct": -0.25,
+        "pmaxCoeffPct": -0.29,
+        "tMin": 18,
+        "tHot": 70,
+        "inverterMaxV": 600,
+        "mpptLow": 500,
+        "mpptHigh": 520,
+        "isc": 14.3,
+        "inverterMaxIsc": 20
+      },
+      "expected": {
+        "vocCold": 54.131,
+        "vmpHot": 38.7797,
+        "vmpCold": 45.5054,
+        "minPanels": 13,
+        "maxPanels": 11,
+        "valid": false,
+        "currentOk": true
+      }
+    },
+    {
+      "label": "1000 V inverter",
+      "input": {
+        "voc": 53.2,
+        "vmp": 44.6,
+        "vocCoeffPct": -0.25,
+        "pmaxCoeffPct": -0.29,
+        "tMin": 18,
+        "tHot": 70,
+        "inverterMaxV": 1000,
+        "mpptLow": 90,
+        "mpptHigh": 850,
+        "isc": 14.3,
+        "inverterMaxIsc": 20
+      },
+      "expected": {
+        "vocCold": 54.131,
+        "vmpHot": 38.7797,
+        "vmpCold": 45.5054,
+        "minPanels": 3,
+        "maxPanels": 18,
+        "valid": true,
+        "currentOk": true
+      }
+    },
+    {
+      "label": "hot 80 °C cells",
+      "input": {
+        "voc": 53.2,
+        "vmp": 44.6,
+        "vocCoeffPct": -0.25,
+        "pmaxCoeffPct": -0.29,
+        "tMin": 18,
+        "tHot": 80,
+        "inverterMaxV": 600,
+        "mpptLow": 90,
+        "mpptHigh": 550,
+        "isc": 14.3,
+        "inverterMaxIsc": 20
+      },
+      "expected": {
+        "vocCold": 54.131,
+        "vmpHot": 37.4863,
+        "vmpCold": 45.5054,
+        "minPanels": 3,
+        "maxPanels": 11,
+        "valid": true,
+        "currentOk": true
+      }
+    }
+  ]
+}

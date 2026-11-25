@@ -1,0 +1,169 @@
+{
+  "function": "panelFit",
+  "defaults": {
+    "ratePhpPerKwh": 15.06,
+    "yieldKwhPerKwpDay": 4,
+    "panelWatts": 600,
+    "panelAreaM2": 2.6,
+    "priceLowPerKwp": 50000,
+    "priceHighPerKwp": 70000,
+    "exportCreditPhpPerKwh": 5.5,
+    "daysPerMonth": 30
+  },
+  "tolerance": 0.01,
+  "vectors": [
+    {
+      "label": "8×5 m plane",
+      "input": {
+        "planeWidthM": 8,
+        "planeHeightM": 5,
+        "setbackM": 0.4,
+        "gapM": 0.02,
+        "panelWidthM": 1.134,
+        "panelHeightM": 2.382,
+        "panelWatts": 600
+      },
+      "expected": {
+        "panels": 9,
+        "orientation": "landscape",
+        "cols": 3,
+        "rows": 3,
+        "kwp": 5.4
+      }
+    },
+    {
+      "label": "narrow 3×10 m",
+      "input": {
+        "planeWidthM": 3,
+        "planeHeightM": 10,
+        "setbackM": 0.4,
+        "gapM": 0.02,
+        "panelWidthM": 1.134,
+        "panelHeightM": 2.382,
+        "panelWatts": 600
+      },
+      "expected": {
+        "panels": 3,
+        "orientation": "portrait",
+        "cols": 1,
+        "rows": 3,
+        "kwp": 1.8
+      }
+    },
+    {
+      "label": "setback eats plane",
+      "input": {
+        "planeWidthM": 0.8,
+        "planeHeightM": 5,
+        "setbackM": 0.4,
+        "gapM": 0.02,
+        "panelWidthM": 1.134,
+        "panelHeightM": 2.382,
+        "panelWatts": 600
+      },
+      "expected": {
+        "panels": 0,
+        "orientation": null,
+        "cols": 0,
+        "rows": 0,
+        "kwp": 0
+      }
+    },
+    {
+      "label": "no setback",
+      "input": {
+        "planeWidthM": 8,
+        "planeHeightM": 5,
+        "setbackM": 0,
+        "gapM": 0.02,
+        "panelWidthM": 1.134,
+        "panelHeightM": 2.382,
+        "panelWatts": 600
+      },
+      "expected": {
+        "panels": 12,
+        "orientation": "portrait",
+        "cols": 6,
+        "rows": 2,
+        "kwp": 7.2
+      }
+    },
+    {
+      "label": "1 m fire setback",
+      "input": {
+        "planeWidthM": 8,
+        "planeHeightM": 5,
+        "setbackM": 1,
+        "gapM": 0.02,
+        "panelWidthM": 1.134,
+        "panelHeightM": 2.382,
+        "panelWatts": 600
+      },
+      "expected": {
+        "panels": 5,
+        "orientation": "portrait",
+        "cols": 5,
+        "rows": 1,
+        "kwp": 3
+      }
+    },
+    {
+      "label": "max panels cap",
+      "input": {
+        "planeWidthM": 8,
+        "planeHeightM": 5,
+        "setbackM": 0.4,
+        "gapM": 0.02,
+        "panelWidthM": 1.134,
+        "panelHeightM": 2.382,
+        "panelWatts": 600,
+        "maxPanels": 4
+      },
+      "expected": {
+        "panels": 4,
+        "orientation": "landscape",
+        "cols": 3,
+        "rows": 3,
+        "kwp": 2.4
+      }
+    },
+    {
+      "label": "large 12×7 m",
+      "input": {
+        "planeWidthM": 12,
+        "planeHeightM": 7,
+        "setbackM": 0.4,
+        "gapM": 0.02,
+        "panelWidthM": 1.134,
+        "panelHeightM": 2.382,
+        "panelWatts": 600
+      },
+      "expected": {
+        "panels": 20,
+        "orientation": "landscape",
+        "cols": 4,
+        "rows": 5,
+        "kwp": 12
+      }
+    },
+    {
+      "label": "450 W smaller panel",
+      "input": {
+        "planeWidthM": 8,
+        "planeHeightM": 5,
+        "setbackM": 0.4,
+        "gapM": 0.02,
+        "panelWidthM": 1.038,
+        "panelHeightM": 1.762,
+        "panelWatts": 450
+      },
+      "expected": {
+        "panels": 12,
+        "orientation": "portrait",
+        "cols": 6,
+        "rows": 2,
+        "kwp": 5.4
+      }
+    }
+  ]
+}

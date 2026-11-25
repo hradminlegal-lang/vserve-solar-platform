@@ -1,0 +1,101 @@
+{
+  "function": "affordability",
+  "defaults": {
+    "ratePhpPerKwh": 15.06,
+    "yieldKwhPerKwpDay": 4,
+    "panelWatts": 600,
+    "panelAreaM2": 2.6,
+    "priceLowPerKwp": 50000,
+    "priceHighPerKwp": 70000,
+    "exportCreditPhpPerKwh": 5.5,
+    "daysPerMonth": 30
+  },
+  "tolerance": 0.01,
+  "vectors": [
+    {
+      "label": "typical",
+      "input": {
+        "grossMonthlyIncomePhp": 60000,
+        "existingMonthlyDebtPhp": 8000,
+        "maxDtiPct": 35,
+        "annualRatePct": 9,
+        "termYears": 5,
+        "cashAvailablePhp": 30000,
+        "systemPricePhp": 250000
+      },
+      "expected": {
+        "maxMonthlyPaymentPhp": 13000,
+        "maxLoanPhp": 626253.8558,
+        "affordsSystem": true
+      }
+    },
+    {
+      "label": "debt too high",
+      "input": {
+        "grossMonthlyIncomePhp": 60000,
+        "existingMonthlyDebtPhp": 25000,
+        "maxDtiPct": 35,
+        "annualRatePct": 9,
+        "termYears": 5,
+        "cashAvailablePhp": 30000,
+        "systemPricePhp": 250000
+      },
+      "expected": {
+        "maxMonthlyPaymentPhp": 0,
+        "maxLoanPhp": 0,
+        "affordsSystem": false
+      }
+    },
+    {
+      "label": "zero interest",
+      "input": {
+        "grossMonthlyIncomePhp": 60000,
+        "existingMonthlyDebtPhp": 8000,
+        "maxDtiPct": 35,
+        "annualRatePct": 0,
+        "termYears": 5,
+        "cashAvailablePhp": 30000,
+        "systemPricePhp": 250000
+      },
+      "expected": {
+        "maxMonthlyPaymentPhp": 13000,
+        "maxLoanPhp": 780000,
+        "affordsSystem": true
+      }
+    },
+    {
+      "label": "big system",
+      "input": {
+        "grossMonthlyIncomePhp": 60000,
+        "existingMonthlyDebtPhp": 8000,
+        "maxDtiPct": 35,
+        "annualRatePct": 9,
+        "termYears": 5,
+        "cashAvailablePhp": 30000,
+        "systemPricePhp": 800000
+      },
+      "expected": {
+        "maxMonthlyPaymentPhp": 13000,
+        "maxLoanPhp": 626253.8558,
+        "affordsSystem": false
+      }
+    },
+    {
+      "label": "long term",
+      "input": {
+        "grossMonthlyIncomePhp": 60000,
+        "existingMonthlyDebtPhp": 8000,
+        "maxDtiPct": 35,
+        "annualRatePct": 7,
+        "termYears": 15,
+        "cashAvailablePhp": 30000,
+        "systemPricePhp": 250000
+      },
+      "expected": {
+        "maxMonthlyPaymentPhp": 13000,
+        "maxLoanPhp": 1446327.4489,
+        "affordsSystem": true
+      }
+    }
+  ]
+}

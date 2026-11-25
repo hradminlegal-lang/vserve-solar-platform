@@ -1,0 +1,229 @@
+{
+  "function": "loanCompare",
+  "defaults": {
+    "ratePhpPerKwh": 15.06,
+    "yieldKwhPerKwpDay": 4,
+    "panelWatts": 600,
+    "panelAreaM2": 2.6,
+    "priceLowPerKwp": 50000,
+    "priceHighPerKwp": 70000,
+    "exportCreditPhpPerKwh": 5.5,
+    "daysPerMonth": 30
+  },
+  "tolerance": 0.01,
+  "vectors": [
+    {
+      "label": "₱250k system",
+      "input": [
+        250000,
+        5000,
+        [
+          {
+            "lender": "Lender A (home loan top-up)",
+            "annualRatePct": 7.5,
+            "termYears": 10,
+            "minDownPct": 0,
+            "feesPct": 1,
+            "minLoanPhp": 400000,
+            "maxLoanPhp": 5000000
+          },
+          {
+            "lender": "Lender B (personal loan)",
+            "annualRatePct": 14,
+            "termYears": 3,
+            "minDownPct": 0,
+            "feesPct": 2,
+            "minLoanPhp": 50000,
+            "maxLoanPhp": 1000000
+          },
+          {
+            "lender": "Lender C (housing fund)",
+            "annualRatePct": 9,
+            "termYears": 5,
+            "minDownPct": 10,
+            "feesPct": 0.5,
+            "minLoanPhp": 50000,
+            "maxLoanPhp": 500000
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "lender": "Lender A (home loan top-up)",
+          "eligible": false,
+          "downPaymentPhp": 0,
+          "principalPhp": 250000,
+          "monthlyPaymentPhp": 2967.5442,
+          "totalInterestPhp": 106105.3074,
+          "upfrontPhp": 2500,
+          "totalCostPhp": 358605.3074,
+          "monthlyCashFlowPhp": 2032.4558
+        },
+        {
+          "lender": "Lender B (personal loan)",
+          "eligible": true,
+          "downPaymentPhp": 0,
+          "principalPhp": 250000,
+          "monthlyPaymentPhp": 8544.4074,
+          "totalInterestPhp": 57598.6678,
+          "upfrontPhp": 5000,
+          "totalCostPhp": 312598.6678,
+          "monthlyCashFlowPhp": -3544.4074
+        },
+        {
+          "lender": "Lender C (housing fund)",
+          "eligible": true,
+          "downPaymentPhp": 25000,
+          "principalPhp": 225000,
+          "monthlyPaymentPhp": 4670.6299,
+          "totalInterestPhp": 55237.7956,
+          "upfrontPhp": 26125,
+          "totalCostPhp": 306362.7956,
+          "monthlyCashFlowPhp": 329.3701
+        }
+      ]
+    },
+    {
+      "label": "₱600k system",
+      "input": [
+        600000,
+        11000,
+        [
+          {
+            "lender": "Lender A (home loan top-up)",
+            "annualRatePct": 7.5,
+            "termYears": 10,
+            "minDownPct": 0,
+            "feesPct": 1,
+            "minLoanPhp": 400000,
+            "maxLoanPhp": 5000000
+          },
+          {
+            "lender": "Lender B (personal loan)",
+            "annualRatePct": 14,
+            "termYears": 3,
+            "minDownPct": 0,
+            "feesPct": 2,
+            "minLoanPhp": 50000,
+            "maxLoanPhp": 1000000
+          },
+          {
+            "lender": "Lender C (housing fund)",
+            "annualRatePct": 9,
+            "termYears": 5,
+            "minDownPct": 10,
+            "feesPct": 0.5,
+            "minLoanPhp": 50000,
+            "maxLoanPhp": 500000
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "lender": "Lender A (home loan top-up)",
+          "eligible": true,
+          "downPaymentPhp": 0,
+          "principalPhp": 600000,
+          "monthlyPaymentPhp": 7122.1061,
+          "totalInterestPhp": 254652.7378,
+          "upfrontPhp": 6000,
+          "totalCostPhp": 860652.7378,
+          "monthlyCashFlowPhp": 3877.8939
+        },
+        {
+          "lender": "Lender B (personal loan)",
+          "eligible": true,
+          "downPaymentPhp": 0,
+          "principalPhp": 600000,
+          "monthlyPaymentPhp": 20506.5779,
+          "totalInterestPhp": 138236.8028,
+          "upfrontPhp": 12000,
+          "totalCostPhp": 750236.8028,
+          "monthlyCashFlowPhp": -9506.5779
+        },
+        {
+          "lender": "Lender C (housing fund)",
+          "eligible": false,
+          "downPaymentPhp": 60000,
+          "principalPhp": 540000,
+          "monthlyPaymentPhp": 11209.5118,
+          "totalInterestPhp": 132570.7093,
+          "upfrontPhp": 62700,
+          "totalCostPhp": 735270.7093,
+          "monthlyCashFlowPhp": -209.5118
+        }
+      ]
+    },
+    {
+      "label": "₱1.2M system",
+      "input": [
+        1200000,
+        20000,
+        [
+          {
+            "lender": "Lender A (home loan top-up)",
+            "annualRatePct": 7.5,
+            "termYears": 10,
+            "minDownPct": 0,
+            "feesPct": 1,
+            "minLoanPhp": 400000,
+            "maxLoanPhp": 5000000
+          },
+          {
+            "lender": "Lender B (personal loan)",
+            "annualRatePct": 14,
+            "termYears": 3,
+            "minDownPct": 0,
+            "feesPct": 2,
+            "minLoanPhp": 50000,
+            "maxLoanPhp": 1000000
+          },
+          {
+            "lender": "Lender C (housing fund)",
+            "annualRatePct": 9,
+            "termYears": 5,
+            "minDownPct": 10,
+            "feesPct": 0.5,
+            "minLoanPhp": 50000,
+            "maxLoanPhp": 500000
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "lender": "Lender A (home loan top-up)",
+          "eligible": true,
+          "downPaymentPhp": 0,
+          "principalPhp": 1200000,
+          "monthlyPaymentPhp": 14244.2123,
+          "totalInterestPhp": 509305.4756,
+          "upfrontPhp": 12000,
+          "totalCostPhp": 1721305.4756,
+          "monthlyCashFlowPhp": 5755.7877
+        },
+        {
+          "lender": "Lender B (personal loan)",
+          "eligible": false,
+          "downPaymentPhp": 0,
+          "principalPhp": 1200000,
+          "monthlyPaymentPhp": 41013.1557,
+          "totalInterestPhp": 276473.6055,
+          "upfrontPhp": 24000,
+          "totalCostPhp": 1500473.6055,
+          "monthlyCashFlowPhp": -21013.1557
+        },
+        {
+          "lender": "Lender C (housing fund)",
+          "eligible": false,
+          "downPaymentPhp": 120000,
+          "principalPhp": 1080000,
+          "monthlyPaymentPhp": 22419.0236,
+          "totalInterestPhp": 265141.4187,
+          "upfrontPhp": 125400,
+          "totalCostPhp": 1470541.4187,
+          "monthlyCashFlowPhp": -2419.0236
+        }
+      ]
+    }
+  ]
+}

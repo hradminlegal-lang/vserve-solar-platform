@@ -1,0 +1,118 @@
+{
+  "function": "referralEarnings",
+  "defaults": {
+    "ratePhpPerKwh": 15.06,
+    "yieldKwhPerKwpDay": 4,
+    "panelWatts": 600,
+    "panelAreaM2": 2.6,
+    "priceLowPerKwp": 50000,
+    "priceHighPerKwp": 70000,
+    "exportCreditPhpPerKwh": 5.5,
+    "daysPerMonth": 30
+  },
+  "tolerance": 0.01,
+  "vectors": [
+    {
+      "label": "none",
+      "input": {
+        "avgJobPhp": 250000,
+        "tier1Pct": 1.5,
+        "tier2Pct": 2,
+        "tier3Pct": 3,
+        "maintenanceReferrals": 0,
+        "completedReferrals": 0
+      },
+      "expected": {
+        "installCommission": 0,
+        "maintenance": 0,
+        "total": 0,
+        "tier": 0
+      }
+    },
+    {
+      "label": "tier 1 edge (2)",
+      "input": {
+        "avgJobPhp": 250000,
+        "tier1Pct": 1.5,
+        "tier2Pct": 2,
+        "tier3Pct": 3,
+        "maintenanceReferrals": 3,
+        "completedReferrals": 2
+      },
+      "expected": {
+        "installCommission": 7500,
+        "maintenance": 450,
+        "total": 7950,
+        "tier": 1
+      }
+    },
+    {
+      "label": "tier 2 start (3)",
+      "input": {
+        "avgJobPhp": 250000,
+        "tier1Pct": 1.5,
+        "tier2Pct": 2,
+        "tier3Pct": 3,
+        "maintenanceReferrals": 3,
+        "completedReferrals": 3
+      },
+      "expected": {
+        "installCommission": 12500,
+        "maintenance": 450,
+        "total": 12950,
+        "tier": 2
+      }
+    },
+    {
+      "label": "4 referrals",
+      "input": {
+        "avgJobPhp": 250000,
+        "tier1Pct": 1.5,
+        "tier2Pct": 2,
+        "tier3Pct": 3,
+        "maintenanceReferrals": 3,
+        "completedReferrals": 4
+      },
+      "expected": {
+        "installCommission": 17500,
+        "maintenance": 450,
+        "total": 17950,
+        "tier": 2
+      }
+    },
+    {
+      "label": "tier 3 start (6)",
+      "input": {
+        "avgJobPhp": 250000,
+        "tier1Pct": 1.5,
+        "tier2Pct": 2,
+        "tier3Pct": 3,
+        "maintenanceReferrals": 3,
+        "completedReferrals": 6
+      },
+      "expected": {
+        "installCommission": 30000,
+        "maintenance": 450,
+        "total": 30450,
+        "tier": 3
+      }
+    },
+    {
+      "label": "10 referrals",
+      "input": {
+        "avgJobPhp": 250000,
+        "tier1Pct": 1.5,
+        "tier2Pct": 2,
+        "tier3Pct": 3,
+        "maintenanceReferrals": 3,
+        "completedReferrals": 10
+      },
+      "expected": {
+        "installCommission": 60000,
+        "maintenance": 450,
+        "total": 60450,
+        "tier": 3
+      }
+    }
+  ]
+}

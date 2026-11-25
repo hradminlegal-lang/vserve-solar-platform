@@ -1,0 +1,100 @@
+{
+  "function": "cleaningPayback",
+  "defaults": {
+    "ratePhpPerKwh": 15.06,
+    "yieldKwhPerKwpDay": 4,
+    "panelWatts": 600,
+    "panelAreaM2": 2.6,
+    "priceLowPerKwp": 50000,
+    "priceHighPerKwp": 70000,
+    "exportCreditPhpPerKwh": 5.5,
+    "daysPerMonth": 30
+  },
+  "tolerance": 0.01,
+  "vectors": [
+    {
+      "label": "5 kWp, 5% loss",
+      "input": {
+        "kwp": 5,
+        "lossPct": 5,
+        "selfUsePct": 70
+      },
+      "expected": {
+        "price": 2500,
+        "lostKwh": 30,
+        "lostPhpPerMonth": 365.76,
+        "paybackMonths": 6.8351
+      }
+    },
+    {
+      "label": "3 kWp boundary",
+      "input": {
+        "kwp": 3,
+        "lossPct": 5,
+        "selfUsePct": 70
+      },
+      "expected": {
+        "price": 1500,
+        "lostKwh": 18,
+        "lostPhpPerMonth": 219.456,
+        "paybackMonths": 6.8351
+      }
+    },
+    {
+      "label": "3.01 kWp next tier",
+      "input": {
+        "kwp": 3.01,
+        "lossPct": 5,
+        "selfUsePct": 70
+      },
+      "expected": {
+        "price": 2500,
+        "lostKwh": 18.06,
+        "lostPhpPerMonth": 220.1875,
+        "paybackMonths": 11.354
+      }
+    },
+    {
+      "label": "10 kWp",
+      "input": {
+        "kwp": 10,
+        "lossPct": 8,
+        "selfUsePct": 80
+      },
+      "expected": {
+        "price": 4000,
+        "lostKwh": 96,
+        "lostPhpPerMonth": 1262.208,
+        "paybackMonths": 3.169
+      }
+    },
+    {
+      "label": "above 10 kWp quote",
+      "input": {
+        "kwp": 12,
+        "lossPct": 5,
+        "selfUsePct": 70
+      },
+      "expected": {
+        "price": null,
+        "lostKwh": 72,
+        "lostPhpPerMonth": 877.824,
+        "paybackMonths": null
+      }
+    },
+    {
+      "label": "zero loss",
+      "input": {
+        "kwp": 5,
+        "lossPct": 0,
+        "selfUsePct": 70
+      },
+      "expected": {
+        "price": 2500,
+        "lostKwh": 0,
+        "lostPhpPerMonth": 0,
+        "paybackMonths": null
+      }
+    }
+  ]
+}

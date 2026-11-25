@@ -1,0 +1,273 @@
+{
+  "function": "applianceLoad",
+  "defaults": {
+    "ratePhpPerKwh": 15.06,
+    "yieldKwhPerKwpDay": 4,
+    "panelWatts": 600,
+    "panelAreaM2": 2.6,
+    "priceLowPerKwp": 50000,
+    "priceHighPerKwp": 70000,
+    "exportCreditPhpPerKwh": 5.5,
+    "daysPerMonth": 30
+  },
+  "tolerance": 0.01,
+  "vectors": [
+    {
+      "label": "typical house",
+      "input": [
+        {
+          "watts": 1100,
+          "qty": 1,
+          "hoursPerDay": 6
+        },
+        {
+          "watts": 100,
+          "qty": 1,
+          "hoursPerDay": 24
+        },
+        {
+          "watts": 50,
+          "qty": 3,
+          "hoursPerDay": 10
+        },
+        {
+          "watts": 10,
+          "qty": 8,
+          "hoursPerDay": 6
+        },
+        {
+          "watts": 500,
+          "qty": 1,
+          "hoursPerDay": 1
+        }
+      ],
+      "expected": {
+        "dailyKwh": 11.48,
+        "monthlyKwh": 344.4,
+        "monthlyCostPhp": 5186.664,
+        "panels": 5,
+        "kwp": 3,
+        "peakKw": 1.93,
+        "hybridInverterMinKw": 2.4125
+      }
+    },
+    {
+      "label": "empty list",
+      "input": [],
+      "expected": {
+        "dailyKwh": 0,
+        "monthlyKwh": 0,
+        "monthlyCostPhp": 0,
+        "panels": 0,
+        "kwp": 0,
+        "peakKw": 0,
+        "hybridInverterMinKw": 0
+      }
+    },
+    {
+      "label": "fridge only",
+      "input": [
+        {
+          "watts": 100,
+          "qty": 1,
+          "hoursPerDay": 24
+        }
+      ],
+      "expected": {
+        "dailyKwh": 2.4,
+        "monthlyKwh": 72,
+        "monthlyCostPhp": 1084.32,
+        "panels": 1,
+        "kwp": 0.6,
+        "peakKw": 0.1,
+        "hybridInverterMinKw": 0.125
+      }
+    },
+    {
+      "label": "hours capped at 24",
+      "input": [
+        {
+          "watts": 100,
+          "qty": 1,
+          "hoursPerDay": 30
+        }
+      ],
+      "expected": {
+        "dailyKwh": 2.4,
+        "monthlyKwh": 72,
+        "monthlyCostPhp": 1084.32,
+        "panels": 1,
+        "kwp": 0.6,
+        "peakKw": 0.1,
+        "hybridInverterMinKw": 0.125
+      }
+    },
+    {
+      "label": "zero quantity",
+      "input": [
+        {
+          "watts": 1100,
+          "qty": 0,
+          "hoursPerDay": 6
+        }
+      ],
+      "expected": {
+        "dailyKwh": 0,
+        "monthlyKwh": 0,
+        "monthlyCostPhp": 0,
+        "panels": 0,
+        "kwp": 0,
+        "peakKw": 0,
+        "hybridInverterMinKw": 0
+      }
+    },
+    {
+      "label": "two aircons",
+      "input": [
+        {
+          "watts": 1100,
+          "qty": 2,
+          "hoursPerDay": 8
+        }
+      ],
+      "expected": {
+        "dailyKwh": 17.6,
+        "monthlyKwh": 528,
+        "monthlyCostPhp": 7951.68,
+        "panels": 8,
+        "kwp": 4.8,
+        "peakKw": 2.2,
+        "hybridInverterMinKw": 2.75
+      }
+    },
+    {
+      "label": "water heater short use",
+      "input": [
+        {
+          "watts": 3500,
+          "qty": 1,
+          "hoursPerDay": 0.5
+        }
+      ],
+      "expected": {
+        "dailyKwh": 1.75,
+        "monthlyKwh": 52.5,
+        "monthlyCostPhp": 790.65,
+        "panels": 1,
+        "kwp": 0.6,
+        "peakKw": 3.5,
+        "hybridInverterMinKw": 4.375
+      }
+    },
+    {
+      "label": "many small loads",
+      "input": [
+        {
+          "watts": 10,
+          "qty": 20,
+          "hoursPerDay": 6
+        },
+        {
+          "watts": 12,
+          "qty": 1,
+          "hoursPerDay": 24
+        }
+      ],
+      "expected": {
+        "dailyKwh": 1.488,
+        "monthlyKwh": 44.64,
+        "monthlyCostPhp": 672.2784,
+        "panels": 1,
+        "kwp": 0.6,
+        "peakKw": 0.212,
+        "hybridInverterMinKw": 0.265
+      }
+    },
+    {
+      "label": "induction + rice cooker",
+      "input": [
+        {
+          "watts": 2000,
+          "qty": 1,
+          "hoursPerDay": 1
+        },
+        {
+          "watts": 600,
+          "qty": 1,
+          "hoursPerDay": 1
+        }
+      ],
+      "expected": {
+        "dailyKwh": 2.6,
+        "monthlyKwh": 78,
+        "monthlyCostPhp": 1174.68,
+        "panels": 2,
+        "kwp": 1.2,
+        "peakKw": 2.6,
+        "hybridInverterMinKw": 3.25
+      }
+    },
+    {
+      "label": "zero hours",
+      "input": [
+        {
+          "watts": 1100,
+          "qty": 1,
+          "hoursPerDay": 0
+        }
+      ],
+      "expected": {
+        "dailyKwh": 0,
+        "monthlyKwh": 0,
+        "monthlyCostPhp": 0,
+        "panels": 0,
+        "kwp": 0,
+        "peakKw": 1.1,
+        "hybridInverterMinKw": 1.375
+      }
+    },
+    {
+      "label": "quarter hour kettle",
+      "input": [
+        {
+          "watts": 1800,
+          "qty": 1,
+          "hoursPerDay": 0.25
+        }
+      ],
+      "expected": {
+        "dailyKwh": 0.45,
+        "monthlyKwh": 13.5,
+        "monthlyCostPhp": 203.31,
+        "panels": 1,
+        "kwp": 0.6,
+        "peakKw": 1.8,
+        "hybridInverterMinKw": 2.25
+      }
+    },
+    {
+      "label": "shop: freezers",
+      "input": [
+        {
+          "watts": 120,
+          "qty": 3,
+          "hoursPerDay": 24
+        },
+        {
+          "watts": 50,
+          "qty": 4,
+          "hoursPerDay": 12
+        }
+      ],
+      "expected": {
+        "dailyKwh": 11.04,
+        "monthlyKwh": 331.2,
+        "monthlyCostPhp": 4987.872,
+        "panels": 5,
+        "kwp": 3,
+        "peakKw": 0.56,
+        "hybridInverterMinKw": 0.7
+      }
+    }
+  ]
+}

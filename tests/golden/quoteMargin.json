@@ -1,0 +1,148 @@
+{
+  "function": "quoteMargin",
+  "defaults": {
+    "ratePhpPerKwh": 15.06,
+    "yieldKwhPerKwpDay": 4,
+    "panelWatts": 600,
+    "panelAreaM2": 2.6,
+    "priceLowPerKwp": 50000,
+    "priceHighPerKwp": 70000,
+    "exportCreditPhpPerKwh": 5.5,
+    "daysPerMonth": 30
+  },
+  "tolerance": 0.01,
+  "vectors": [
+    {
+      "label": "default 8 panels",
+      "input": {
+        "panels": 8,
+        "panelCost": 5200,
+        "inverterCost": 38000,
+        "mountingPerPanel": 1800,
+        "bosCost": 18000,
+        "labourPerKwp": 6000,
+        "permitsCost": 12000,
+        "marginPct": 25,
+        "vat": true
+      },
+      "expected": {
+        "kwp": 4.8,
+        "cost": 152800,
+        "grossProfit": 50933.3333,
+        "price": 228181.3333,
+        "perKwp": 47537.7778,
+        "flag": "below_range"
+      }
+    },
+    {
+      "label": "no VAT",
+      "input": {
+        "panels": 8,
+        "panelCost": 5200,
+        "inverterCost": 38000,
+        "mountingPerPanel": 1800,
+        "bosCost": 18000,
+        "labourPerKwp": 6000,
+        "permitsCost": 12000,
+        "marginPct": 25,
+        "vat": false
+      },
+      "expected": {
+        "kwp": 4.8,
+        "cost": 152800,
+        "grossProfit": 50933.3333,
+        "price": 203733.3333,
+        "perKwp": 42444.4444,
+        "flag": "below_range"
+      }
+    },
+    {
+      "label": "zero margin",
+      "input": {
+        "panels": 8,
+        "panelCost": 5200,
+        "inverterCost": 38000,
+        "mountingPerPanel": 1800,
+        "bosCost": 18000,
+        "labourPerKwp": 6000,
+        "permitsCost": 12000,
+        "marginPct": 0,
+        "vat": true
+      },
+      "expected": {
+        "kwp": 4.8,
+        "cost": 152800,
+        "grossProfit": 0,
+        "price": 171136,
+        "perKwp": 35653.3333,
+        "flag": "below_range"
+      }
+    },
+    {
+      "label": "margin capped at 95",
+      "input": {
+        "panels": 8,
+        "panelCost": 5200,
+        "inverterCost": 38000,
+        "mountingPerPanel": 1800,
+        "bosCost": 18000,
+        "labourPerKwp": 6000,
+        "permitsCost": 12000,
+        "marginPct": 99,
+        "vat": true
+      },
+      "expected": {
+        "kwp": 4.8,
+        "cost": 152800,
+        "grossProfit": 2903200,
+        "price": 3422720,
+        "perKwp": 713066.6667,
+        "flag": "above_range"
+      }
+    },
+    {
+      "label": "big job 20 panels",
+      "input": {
+        "panels": 20,
+        "panelCost": 5200,
+        "inverterCost": 75000,
+        "mountingPerPanel": 1800,
+        "bosCost": 18000,
+        "labourPerKwp": 6000,
+        "permitsCost": 12000,
+        "marginPct": 25,
+        "vat": true
+      },
+      "expected": {
+        "kwp": 12,
+        "cost": 317000,
+        "grossProfit": 105666.6667,
+        "price": 473386.6667,
+        "perKwp": 39448.8889,
+        "flag": "below_range"
+      }
+    },
+    {
+      "label": "high margin 45%",
+      "input": {
+        "panels": 8,
+        "panelCost": 5200,
+        "inverterCost": 38000,
+        "mountingPerPanel": 1800,
+        "bosCost": 18000,
+        "labourPerKwp": 6000,
+        "permitsCost": 12000,
+        "marginPct": 45,
+        "vat": true
+      },
+      "expected": {
+        "kwp": 4.8,
+        "cost": 152800,
+        "grossProfit": 125018.1818,
+        "price": 311156.3636,
+        "perKwp": 64824.2424,
+        "flag": "in_range"
+      }
+    }
+  ]
+}

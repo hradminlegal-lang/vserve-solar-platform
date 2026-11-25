@@ -1,0 +1,226 @@
+{
+  "function": "whatCanItRun",
+  "defaults": {
+    "ratePhpPerKwh": 15.06,
+    "yieldKwhPerKwpDay": 4,
+    "panelWatts": 600,
+    "panelAreaM2": 2.6,
+    "priceLowPerKwp": 50000,
+    "priceHighPerKwp": 70000,
+    "exportCreditPhpPerKwh": 5.5,
+    "daysPerMonth": 30
+  },
+  "tolerance": 0.01,
+  "vectors": [
+    {
+      "label": "3 kWp, typical house",
+      "input": [
+        3,
+        [
+          {
+            "watts": 1100,
+            "qty": 1,
+            "hoursPerDay": 6
+          },
+          {
+            "watts": 100,
+            "qty": 1,
+            "hoursPerDay": 24
+          },
+          {
+            "watts": 50,
+            "qty": 3,
+            "hoursPerDay": 10
+          },
+          {
+            "watts": 10,
+            "qty": 8,
+            "hoursPerDay": 6
+          },
+          {
+            "watts": 500,
+            "qty": 1,
+            "hoursPerDay": 1
+          }
+        ]
+      ],
+      "expected": {
+        "dailyKwh": 12,
+        "hours": [
+          10.9091,
+          24,
+          24,
+          24,
+          24
+        ]
+      }
+    },
+    {
+      "label": "1 kWp",
+      "input": [
+        1,
+        [
+          {
+            "watts": 1100,
+            "qty": 1,
+            "hoursPerDay": 6
+          },
+          {
+            "watts": 100,
+            "qty": 1,
+            "hoursPerDay": 24
+          },
+          {
+            "watts": 50,
+            "qty": 3,
+            "hoursPerDay": 10
+          },
+          {
+            "watts": 10,
+            "qty": 8,
+            "hoursPerDay": 6
+          },
+          {
+            "watts": 500,
+            "qty": 1,
+            "hoursPerDay": 1
+          }
+        ]
+      ],
+      "expected": {
+        "dailyKwh": 4,
+        "hours": [
+          3.6364,
+          24,
+          24,
+          24,
+          8
+        ]
+      }
+    },
+    {
+      "label": "10 kWp",
+      "input": [
+        10,
+        [
+          {
+            "watts": 1100,
+            "qty": 1,
+            "hoursPerDay": 6
+          },
+          {
+            "watts": 100,
+            "qty": 1,
+            "hoursPerDay": 24
+          },
+          {
+            "watts": 50,
+            "qty": 3,
+            "hoursPerDay": 10
+          },
+          {
+            "watts": 10,
+            "qty": 8,
+            "hoursPerDay": 6
+          },
+          {
+            "watts": 500,
+            "qty": 1,
+            "hoursPerDay": 1
+          }
+        ]
+      ],
+      "expected": {
+        "dailyKwh": 40,
+        "hours": [
+          24,
+          24,
+          24,
+          24,
+          24
+        ]
+      }
+    },
+    {
+      "label": "0 kWp",
+      "input": [
+        0,
+        [
+          {
+            "watts": 1100,
+            "qty": 1,
+            "hoursPerDay": 6
+          },
+          {
+            "watts": 100,
+            "qty": 1,
+            "hoursPerDay": 24
+          },
+          {
+            "watts": 50,
+            "qty": 3,
+            "hoursPerDay": 10
+          },
+          {
+            "watts": 10,
+            "qty": 8,
+            "hoursPerDay": 6
+          },
+          {
+            "watts": 500,
+            "qty": 1,
+            "hoursPerDay": 1
+          }
+        ]
+      ],
+      "expected": {
+        "dailyKwh": 0,
+        "hours": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "label": "zero-watt item",
+      "input": [
+        3,
+        [
+          {
+            "watts": 0,
+            "qty": 1,
+            "hoursPerDay": 1
+          }
+        ]
+      ],
+      "expected": {
+        "dailyKwh": 12,
+        "hours": [
+          0
+        ]
+      }
+    },
+    {
+      "label": "5 kWp two aircons",
+      "input": [
+        5,
+        [
+          {
+            "watts": 1100,
+            "qty": 2,
+            "hoursPerDay": 8
+          }
+        ]
+      ],
+      "expected": {
+        "dailyKwh": 20,
+        "hours": [
+          9.0909
+        ]
+      }
+    }
+  ]
+}

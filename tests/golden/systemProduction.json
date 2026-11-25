@@ -1,0 +1,86 @@
+{
+  "function": "systemProduction",
+  "defaults": {
+    "ratePhpPerKwh": 15.06,
+    "yieldKwhPerKwpDay": 4,
+    "panelWatts": 600,
+    "panelAreaM2": 2.6,
+    "priceLowPerKwp": 50000,
+    "priceHighPerKwp": 70000,
+    "exportCreditPhpPerKwh": 5.5,
+    "daysPerMonth": 30
+  },
+  "tolerance": 0.01,
+  "vectors": [
+    {
+      "label": "two planes east/west",
+      "input": [
+        {
+          "kwp": 3,
+          "specificYieldKwhPerKwp": 1300,
+          "shadingLossPct": 0
+        },
+        {
+          "kwp": 3,
+          "specificYieldKwhPerKwp": 1250,
+          "shadingLossPct": 5
+        }
+      ],
+      "expected": {
+        "kwp": 6,
+        "annualKwh": 7462.5,
+        "perPlaneKwh": [
+          3900,
+          3562.5
+        ],
+        "specificYield": 1243.75
+      }
+    },
+    {
+      "label": "one south plane",
+      "input": [
+        {
+          "kwp": 5.4,
+          "specificYieldKwhPerKwp": 1420,
+          "shadingLossPct": 3
+        }
+      ],
+      "expected": {
+        "kwp": 5.4,
+        "annualKwh": 7437.96,
+        "perPlaneKwh": [
+          7437.96
+        ],
+        "specificYield": 1377.4
+      }
+    },
+    {
+      "label": "empty",
+      "input": [],
+      "expected": {
+        "kwp": 0,
+        "annualKwh": 0,
+        "perPlaneKwh": [],
+        "specificYield": 0
+      }
+    },
+    {
+      "label": "heavy shading",
+      "input": [
+        {
+          "kwp": 4,
+          "specificYieldKwhPerKwp": 1400,
+          "shadingLossPct": 30
+        }
+      ],
+      "expected": {
+        "kwp": 4,
+        "annualKwh": 3920,
+        "perPlaneKwh": [
+          3920
+        ],
+        "specificYield": 980
+      }
+    }
+  ]
+}

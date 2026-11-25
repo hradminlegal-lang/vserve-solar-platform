@@ -1,0 +1,292 @@
+{
+  "function": "billToSystem",
+  "defaults": {
+    "ratePhpPerKwh": 15.06,
+    "yieldKwhPerKwpDay": 4,
+    "panelWatts": 600,
+    "panelAreaM2": 2.6,
+    "priceLowPerKwp": 50000,
+    "priceHighPerKwp": 70000,
+    "exportCreditPhpPerKwh": 5.5,
+    "daysPerMonth": 30
+  },
+  "tolerance": 0.01,
+  "vectors": [
+    {
+      "label": "₱6,000 bill, typical",
+      "input": {
+        "monthlyBillPhp": 6000,
+        "daytimeSharePct": 60,
+        "offsetPct": 80
+      },
+      "expected": {
+        "usageKwh": 398.4064,
+        "panels": 5,
+        "kwp": 3,
+        "roofAreaM2": 13,
+        "productionKwh": 360,
+        "selfUsedKwh": 239.0438,
+        "exportedKwh": 120.9562,
+        "savingsPhp": 4265.259,
+        "priceLow": 150000,
+        "priceHigh": 210000,
+        "paybackYearsLow": 2.9307,
+        "paybackYearsHigh": 4.1029,
+        "savings25yPhp": 1279577.6892
+      }
+    },
+    {
+      "label": "₱3,000 bill",
+      "input": {
+        "monthlyBillPhp": 3000,
+        "daytimeSharePct": 50,
+        "offsetPct": 80
+      },
+      "expected": {
+        "usageKwh": 199.2032,
+        "panels": 3,
+        "kwp": 1.8,
+        "roofAreaM2": 7.8,
+        "productionKwh": 216,
+        "selfUsedKwh": 99.6016,
+        "exportedKwh": 116.3984,
+        "savingsPhp": 2140.1912,
+        "priceLow": 90000,
+        "priceHigh": 126000,
+        "paybackYearsLow": 3.5044,
+        "paybackYearsHigh": 4.9061,
+        "savings25yPhp": 642057.3705
+      }
+    },
+    {
+      "label": "₱12,000 bill, full offset",
+      "input": {
+        "monthlyBillPhp": 12000,
+        "daytimeSharePct": 70,
+        "offsetPct": 100
+      },
+      "expected": {
+        "usageKwh": 796.8127,
+        "panels": 12,
+        "kwp": 7.2,
+        "roofAreaM2": 31.2,
+        "productionKwh": 864,
+        "selfUsedKwh": 557.7689,
+        "exportedKwh": 306.2311,
+        "savingsPhp": 10084.2709,
+        "priceLow": 360000,
+        "priceHigh": 504000,
+        "paybackYearsLow": 2.9749,
+        "paybackYearsHigh": 4.1649,
+        "savings25yPhp": 3025281.2749
+      }
+    },
+    {
+      "label": "₱25,000 business, daytime heavy",
+      "input": {
+        "monthlyBillPhp": 25000,
+        "daytimeSharePct": 90,
+        "offsetPct": 90
+      },
+      "expected": {
+        "usageKwh": 1660.0266,
+        "panels": 21,
+        "kwp": 12.6,
+        "roofAreaM2": 54.6,
+        "productionKwh": 1512,
+        "selfUsedKwh": 1494.0239,
+        "exportedKwh": 17.9761,
+        "savingsPhp": 22598.8685,
+        "priceLow": 630000,
+        "priceHigh": 882000,
+        "paybackYearsLow": 2.3231,
+        "paybackYearsHigh": 3.2524,
+        "savings25yPhp": 6779660.5578
+      }
+    },
+    {
+      "label": "zero bill",
+      "input": {
+        "monthlyBillPhp": 0,
+        "daytimeSharePct": 60,
+        "offsetPct": 80
+      },
+      "expected": {
+        "usageKwh": 0,
+        "panels": 0,
+        "kwp": 0,
+        "roofAreaM2": 0,
+        "productionKwh": 0,
+        "selfUsedKwh": 0,
+        "exportedKwh": 0,
+        "savingsPhp": 0,
+        "priceLow": 0,
+        "priceHigh": 0,
+        "paybackYearsLow": null,
+        "paybackYearsHigh": null,
+        "savings25yPhp": 0
+      }
+    },
+    {
+      "label": "all night usage",
+      "input": {
+        "monthlyBillPhp": 5000,
+        "daytimeSharePct": 0,
+        "offsetPct": 80
+      },
+      "expected": {
+        "usageKwh": 332.0053,
+        "panels": 4,
+        "kwp": 2.4,
+        "roofAreaM2": 10.4,
+        "productionKwh": 288,
+        "selfUsedKwh": 0,
+        "exportedKwh": 288,
+        "savingsPhp": 1584,
+        "priceLow": 120000,
+        "priceHigh": 168000,
+        "paybackYearsLow": 6.3131,
+        "paybackYearsHigh": 8.8384,
+        "savings25yPhp": 475200
+      }
+    },
+    {
+      "label": "all daytime usage",
+      "input": {
+        "monthlyBillPhp": 5000,
+        "daytimeSharePct": 100,
+        "offsetPct": 80
+      },
+      "expected": {
+        "usageKwh": 332.0053,
+        "panels": 4,
+        "kwp": 2.4,
+        "roofAreaM2": 10.4,
+        "productionKwh": 288,
+        "selfUsedKwh": 288,
+        "exportedKwh": 0,
+        "savingsPhp": 4337.28,
+        "priceLow": 120000,
+        "priceHigh": 168000,
+        "paybackYearsLow": 2.3056,
+        "paybackYearsHigh": 3.2278,
+        "savings25yPhp": 1301184
+      }
+    },
+    {
+      "label": "over-offset 120%",
+      "input": {
+        "monthlyBillPhp": 8000,
+        "daytimeSharePct": 60,
+        "offsetPct": 120
+      },
+      "expected": {
+        "usageKwh": 531.2085,
+        "panels": 9,
+        "kwp": 5.4,
+        "roofAreaM2": 23.4,
+        "productionKwh": 648,
+        "selfUsedKwh": 318.7251,
+        "exportedKwh": 329.2749,
+        "savingsPhp": 6611.012,
+        "priceLow": 270000,
+        "priceHigh": 378000,
+        "paybackYearsLow": 3.4034,
+        "paybackYearsHigh": 4.7648,
+        "savings25yPhp": 1983303.5857
+      }
+    },
+    {
+      "label": "tiny bill ₱500",
+      "input": {
+        "monthlyBillPhp": 500,
+        "daytimeSharePct": 60,
+        "offsetPct": 80
+      },
+      "expected": {
+        "usageKwh": 33.2005,
+        "panels": 1,
+        "kwp": 0.6,
+        "roofAreaM2": 2.6,
+        "productionKwh": 72,
+        "selfUsedKwh": 19.9203,
+        "exportedKwh": 52.0797,
+        "savingsPhp": 586.4382,
+        "priceLow": 30000,
+        "priceHigh": 42000,
+        "paybackYearsLow": 4.263,
+        "paybackYearsHigh": 5.9682,
+        "savings25yPhp": 175931.4741
+      }
+    },
+    {
+      "label": "₱4,518 bill = 300 kWh",
+      "input": {
+        "monthlyBillPhp": 4518,
+        "daytimeSharePct": 60,
+        "offsetPct": 80
+      },
+      "expected": {
+        "usageKwh": 300,
+        "panels": 4,
+        "kwp": 2.4,
+        "roofAreaM2": 10.4,
+        "productionKwh": 288,
+        "selfUsedKwh": 180,
+        "exportedKwh": 108,
+        "savingsPhp": 3304.8,
+        "priceLow": 120000,
+        "priceHigh": 168000,
+        "paybackYearsLow": 3.0259,
+        "paybackYearsHigh": 4.2363,
+        "savings25yPhp": 991440
+      }
+    },
+    {
+      "label": "offset 10%",
+      "input": {
+        "monthlyBillPhp": 6000,
+        "daytimeSharePct": 60,
+        "offsetPct": 10
+      },
+      "expected": {
+        "usageKwh": 398.4064,
+        "panels": 1,
+        "kwp": 0.6,
+        "roofAreaM2": 2.6,
+        "productionKwh": 72,
+        "selfUsedKwh": 72,
+        "exportedKwh": 0,
+        "savingsPhp": 1084.32,
+        "priceLow": 30000,
+        "priceHigh": 42000,
+        "paybackYearsLow": 2.3056,
+        "paybackYearsHigh": 3.2278,
+        "savings25yPhp": 325296
+      }
+    },
+    {
+      "label": "₱50,000 bill",
+      "input": {
+        "monthlyBillPhp": 50000,
+        "daytimeSharePct": 80,
+        "offsetPct": 80
+      },
+      "expected": {
+        "usageKwh": 3320.0531,
+        "panels": 37,
+        "kwp": 22.2,
+        "roofAreaM2": 96.2,
+        "productionKwh": 2664,
+        "selfUsedKwh": 2656.0425,
+        "exportedKwh": 7.9575,
+        "savingsPhp": 40043.7663,
+        "priceLow": 1110000,
+        "priceHigh": 1554000,
+        "paybackYearsLow": 2.31,
+        "paybackYearsHigh": 3.234,
+        "savings25yPhp": 12013129.8805
+      }
+    }
+  ]
+}
