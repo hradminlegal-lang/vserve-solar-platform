@@ -1,0 +1,48 @@
+/* VServe Solar design tokens (docs/design-system.md). Light by default, dark by system setting. */
+:root {
+  --vs-bg: #f5f7fa;
+  --vs-surface: #ffffff;
+  --vs-sunken: #eef2f6;
+  --vs-ink: #13202d;
+  --vs-muted: #566576;
+  --vs-line: #d9e0e8;
+  --vs-navy: #0f2a43;
+  --vs-navy-ink: #eaf1f8;
+  --vs-navy-muted: #a9bdd1;
+  --vs-sun: #e9a316;
+  --vs-sun-ink: #13202d;
+  --vs-sun-soft: #fdf1d6;
+  --vs-sun-text: #8f5e00;
+  --vs-good: #176a3b;
+  --vs-good-soft: #e2f4ea;
+  --vs-warn: #8a5f00;
+  --vs-warn-soft: #fbf0d4;
+  --vs-bad: #b42828;
+  --vs-bad-soft: #fbe4e4;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --vs-bg: #0b131c;
+    --vs-surface: #111c28;
+    --vs-sunken: #0e1822;
+    --vs-ink: #e6edf4;
+    --vs-muted: #9aabbb;
+    --vs-line: #223243;
+    --vs-navy: #081a2b;
+    --vs-navy-ink: #eaf1f8;
+    --vs-navy-muted: #93a9bf;
+    --vs-sun: #f2b733;
+    --vs-sun-ink: #13202d;
+    --vs-sun-soft: #2b2410;
+    --vs-sun-text: #f2b733;
+    --vs-good: #4cc283;
+    --vs-good-soft: #12291d;
+    --vs-warn: #e3b448;
+    --vs-warn-soft: #2a2310;
+    --vs-bad: #f07171;
+    --vs-bad-soft: #2d1515;
+    color-scheme: dark;
+  }
+}

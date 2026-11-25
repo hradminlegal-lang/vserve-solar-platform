@@ -1,1 +1,54 @@
 @import 'tailwindcss';
+@import '@vserve/ui/tokens.css';
+
+@source '../../../../packages/ui/src';
+
+@theme inline {
+  --color-bg: var(--vs-bg);
+  --color-surface: var(--vs-surface);
+  --color-sunken: var(--vs-sunken);
+  --color-ink: var(--vs-ink);
+  --color-muted: var(--vs-muted);
+  --color-line: var(--vs-line);
+  --color-navy: var(--vs-navy);
+  --color-navy-ink: var(--vs-navy-ink);
+  --color-navy-muted: var(--vs-navy-muted);
+  --color-sun: var(--vs-sun);
+  --color-sun-ink: var(--vs-sun-ink);
+  --color-sun-soft: var(--vs-sun-soft);
+  --color-sun-text: var(--vs-sun-text);
+  --color-good: var(--vs-good);
+  --color-good-soft: var(--vs-good-soft);
+  --color-warn: var(--vs-warn);
+  --color-warn-soft: var(--vs-warn-soft);
+  --color-bad: var(--vs-bad);
+  --color-bad-soft: var(--vs-bad-soft);
+  --font-sans: var(--font-body), system-ui, sans-serif;
+  --font-display: var(--font-display-face), var(--font-body), system-ui, sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, monospace;
+}
+
+html {
+  background: var(--vs-bg);
+  color: var(--vs-ink);
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

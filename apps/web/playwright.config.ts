@@ -17,6 +17,7 @@ export default defineConfig({
   ],
   webServer: {
     command: `pnpm build && pnpm start -p ${port}`,
+    env: { ENABLE_DEV_UI: '1' },
     url: `http://localhost:${port}`,
     reuseExistingServer: !process.env.CI,
     timeout: 240_000,
