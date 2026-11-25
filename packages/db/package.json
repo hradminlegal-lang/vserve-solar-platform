@@ -1,0 +1,10 @@
+{
+  "name": "@vserve/db",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "lint": "echo \"no lint yet\"",
+    "typecheck": "echo \"no types yet\"",
+    "test": "echo \"database tests run with supabase test db\""
+  }
+}

@@ -3,6 +3,7 @@
 VServe Solar Platform is a multi-company Philippine solar marketplace. Customers understand, compare, finance and buy solar. Solar companies (tenants) run their sales and engineering in a workspace: CRM, ads and lead capture, satellite roof design, energy simulation, quote maker, proposals, storefront. Read `docs/product.md` first in every new session.
 
 ## Stack (do not change without asking)
+
 - Monorepo: Turborepo + pnpm.
 - `apps/web`: Next.js (App Router), TypeScript strict, Tailwind, installable PWA. Mobile-first: design at 360–400 px wide first.
 - `packages/calc`: pure TypeScript calculator engine; its only dependency is zod. Source of truth for every number shown to users.
@@ -15,26 +16,28 @@ VServe Solar Platform is a multi-company Philippine solar marketplace. Customers
 - Design studio map: Google Maps JavaScript API; geometry with Turf.js; drawings as SVG. Ask before adding any other mapping or 3D library.
 
 ## Where things are specified
-| Topic | File |
-| --- | --- |
-| Scope, sides, modules, phases | `docs/product.md` |
-| Formulas and defaults | `docs/calculators.md`, `docs/calc-reference.js`, `tests/golden/*.json` |
-| Tables, tenancy | `docs/data-model.md` |
-| CRM, onboarding, ads | `docs/sales-pipeline.md` |
-| Roof design, energy, electrical, BOM | `docs/design-studio.md` |
-| Quote maker, proposals | `docs/quotes-proposals.md`, `docs/quote-format.md` |
-| Parts price requests to suppliers | `docs/supplier-rfq.md` |
-| Homeowner system record, service | `docs/system-record.md` |
-| Financing | `docs/financing.md` |
-| Marketplace, payments | `docs/marketplace.md` |
-| Verification, reviews, ranking | `docs/trust.md` |
-| Third-party services | `docs/integrations.md` |
-| Look and components | `docs/design-system.md` |
-| Screens and copy | `docs/screens.md`, `mockups/` |
+
+| Topic                                | File                                                                   |
+| ------------------------------------ | ---------------------------------------------------------------------- |
+| Scope, sides, modules, phases        | `docs/product.md`                                                      |
+| Formulas and defaults                | `docs/calculators.md`, `docs/calc-reference.js`, `tests/golden/*.json` |
+| Tables, tenancy                      | `docs/data-model.md`                                                   |
+| CRM, onboarding, ads                 | `docs/sales-pipeline.md`                                               |
+| Roof design, energy, electrical, BOM | `docs/design-studio.md`                                                |
+| Quote maker, proposals               | `docs/quotes-proposals.md`, `docs/quote-format.md`                     |
+| Parts price requests to suppliers    | `docs/supplier-rfq.md`                                                 |
+| Homeowner system record, service     | `docs/system-record.md`                                                |
+| Financing                            | `docs/financing.md`                                                    |
+| Marketplace, payments                | `docs/marketplace.md`                                                  |
+| Verification, reviews, ranking       | `docs/trust.md`                                                        |
+| Third-party services                 | `docs/integrations.md`                                                 |
+| Look and components                  | `docs/design-system.md`                                                |
+| Screens and copy                     | `docs/screens.md`, `mockups/`                                          |
 
 If the code and a doc disagree, the doc wins. If a doc is silent or ambiguous, stop and ask; do not invent business rules (prices, fees, commissions, eligibility).
 
 ## Non-negotiable rules
+
 1. Money is stored as integer centavos (`bigint`). Display as `₱12,345`. Never use floats for stored money.
 2. Times are stored in UTC (`timestamptz`) and shown in `Asia/Manila`.
 3. No business logic in client components. Prices, payment status, order/job status, commissions, verification levels and rankings are computed or changed only in server code (Edge Functions, server actions, database functions).
@@ -51,6 +54,7 @@ If the code and a doc disagree, the doc wins. If a doc is silent or ambiguous, s
 14. Copy: plain English, short sentences, Taglish only where `docs/screens.md` gives it. No hype.
 
 ## How to work
+
 - Start each task by reading the docs it names, then post a short plan (files to create/change, tests to add) and wait for approval.
 - One feature per branch and pull request. Keep PRs under ~600 changed lines where possible.
 - Run before every commit: `pnpm lint && pnpm typecheck && pnpm test`. For database work also `supabase db test`. For UI work also `pnpm e2e`.
@@ -58,8 +62,12 @@ If the code and a doc disagree, the doc wins. If a doc is silent or ambiguous, s
 - Do not add dependencies without saying why and what they cost in bundle size.
 - Never edit generated files (`packages/db/types.ts`) by hand; regenerate them.
 
-## Commands (fill in as they are created)
-- `pnpm dev` — run web app
-- `pnpm test` — unit tests (Vitest)
-- `pnpm e2e` — Playwright
-- `supabase start` / `supabase db reset` / `supabase db test`
+## Commands
+
+- `pnpm install` — install everything (pnpm 10, Node 22; see `.nvmrc`)
+- `pnpm dev` — run the web app at http://localhost:3000
+- `pnpm lint` / `pnpm typecheck` / `pnpm test` — all packages, through Turborepo
+- `pnpm build` — production build
+- `pnpm e2e` — Playwright (builds and starts the app on port 3100; mobile and desktop projects)
+- `pnpm format` / `pnpm format:check` — Prettier
+- `npx supabase@2.48.3 start` / `npx supabase@2.48.3 db reset` / `npx supabase@2.48.3 test db` — local database (needs Docker); CI runs these in the `database` job
