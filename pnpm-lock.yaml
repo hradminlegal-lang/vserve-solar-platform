@@ -20,6 +20,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@vserve/calc':
+        specifier: workspace:*
+        version: link:../../packages/calc
       next:
         specifier: 15.5.4
         version: 15.5.4(@playwright/test@1.63.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
