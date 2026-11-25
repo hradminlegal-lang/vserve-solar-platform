@@ -71,3 +71,4 @@ If the code and a doc disagree, the doc wins. If a doc is silent or ambiguous, s
 - `pnpm e2e` — Playwright (builds and starts the app on port 3100; mobile and desktop projects)
 - `pnpm format` / `pnpm format:check` — Prettier
 - `npx supabase@2.48.3 start` / `npx supabase@2.48.3 db reset` / `npx supabase@2.48.3 test db` — local database (needs Docker); CI runs these in the `database` job
+- `pnpm db:test:local` — same migrations and pgTAP tests on a plain Postgres 16 + PostGIS + pgTAP (set PGHOST/PGPORT/PGUSER); see `packages/db/README.md`

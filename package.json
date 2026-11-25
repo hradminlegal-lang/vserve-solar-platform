@@ -13,7 +13,8 @@
     "test": "turbo run test",
     "e2e": "pnpm --filter @vserve/web e2e",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "db:test:local": "packages/db/scripts/test-local.sh"
   },
   "devDependencies": {
     "prettier": "3.6.2",
