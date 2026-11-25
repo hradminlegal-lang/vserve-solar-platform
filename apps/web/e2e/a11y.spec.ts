@@ -1,7 +1,18 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
-const pages = ['/', '/calculators', '/calculators/savings', '/w/company-a/pipeline', '/dev/ui'];
+const pages = [
+  '/',
+  '/calculators',
+  '/calculators/bill-to-system',
+  '/calculators/appliances',
+  '/calculators/battery',
+  '/calculators/savings',
+  '/calculators/quote-checker',
+  '/calculators/loan-vs-savings',
+  '/w/company-a/pipeline',
+  '/dev/ui',
+];
 
 for (const scheme of ['light', 'dark'] as const) {
   test.describe(`${scheme} theme`, () => {

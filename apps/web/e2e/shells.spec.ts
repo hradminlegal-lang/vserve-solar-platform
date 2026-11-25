@@ -23,12 +23,12 @@ test.describe('customer shell', () => {
   test('savings screen shows results computed by the engine', async ({ page }) => {
     await page.goto('/calculators/savings');
     await expect(page.getByRole('heading', { name: 'Savings over 25 years' })).toBeVisible();
-    await expect(page.getByText('Savings in year 1')).toBeVisible();
+    await expect(page.getByText('Savings in year 1').first()).toBeVisible();
     await expect(
       page.getByRole('img', { name: /Cumulative savings start at minus/ }),
     ).toBeVisible();
     await expect(
-      page.getByText('Estimate only. Your installer confirms production on site.'),
+      page.getByText(/Estimate only\. Your installer confirms the numbers on site\./),
     ).toBeVisible();
   });
 });
